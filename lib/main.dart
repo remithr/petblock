@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petblock/pages/slider/slider-view.dart';
+import 'package:petblock/styles/style.dart';
 
+import 'pages/dashboard/dashboard_home.dart';
 import 'pages/login/login.dart';
 
 void main() {
@@ -17,13 +19,15 @@ class MyApp extends StatelessWidget {
         // 39C7CE
         // primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: appBackground,
       ),
       debugShowCheckedModeBanner: false,
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
-      home: SliderViewPage(),
+      home: DashBoard(),
       routes: {
         'slider': (context) => SliderViewPage(),
         'login': (context) => LoginPage(),
+        'dashboard': (context) => DashBoard(),
       },
     );
   }
