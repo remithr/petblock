@@ -72,7 +72,8 @@ class _SliderViewPageState extends State<SliderViewPage> {
 
   void onDonePress() {
     // Back to the first tab
-    this.goToTab(0);
+    // this.goToTab(0);
+    Navigator.of(context).pushReplacementNamed('login');
   }
 
   void onTabChangeCompleted(index) {
@@ -80,30 +81,56 @@ class _SliderViewPageState extends State<SliderViewPage> {
   }
 
   Widget renderNextBtn() {
-    // return Icon(
-    //   Icons.navigate_next,
-    //   color: Color(0xffffcc5c),
-    //   size: 35.0,
-    // );
-    return RawMaterialButton(
-      onPressed: () {},
-      // elevation: 2.0,
-      fillColor: primaryColor,
-      child: Icon(
-        Icons.navigate_next,
-        color: tgrey,
-        size: 45.0,
-      ),
-      padding: EdgeInsets.all(5.0),
-      shape: CircleBorder(),
+    return Icon(
+      Icons.navigate_next,
+      color: twhite,
+      size: 55.0,
     );
+    // return RawMaterialButton(
+    //   onPressed: () {
+    //     print('Current slide ');
+    //   },
+    //   // elevation: 2.0,
+    //   fillColor: primaryColor,
+    //   child: Icon(
+    //     Icons.navigate_next,
+    //     color: twhite,
+    //     size: 45.0,
+    //   ),
+    //   padding: EdgeInsets.all(5.0),
+    //   shape: CircleBorder(),
+    // );
   }
 
   Widget renderDoneBtn() {
-    return Icon(
-      Icons.done,
-      color: Color(0xffffcc5c),
+    // return Icon(
+    //   Icons.done,
+    //   color: tgrey,
+    //   size: 55.0,
+    // );
+    return Text(
+      'Get Started',
+      style: TextStyle(
+        color: twhite,
+        fontSize: 16.0,
+      ),
     );
+    // return RawMaterialButton(
+    //   onPressed: () {},
+    //   elevation: 2.0,
+    //   fillColor: primaryColor,
+    //   child: Text(
+    //     'Get Started',
+    //   ),
+    //   // padding: EdgeInsets.all(
+    //   //   5.0,
+    //   // ),
+    //   // shape: CircleBorder(),
+    // );
+    // return RaisedButton(
+    //   onPressed: null,
+    //   child: Text('Get Started'),
+    // );
   }
 
   Widget renderSkipBtn() {
@@ -118,7 +145,7 @@ class _SliderViewPageState extends State<SliderViewPage> {
     for (int i = 0; i < slides.length; i++) {
       Slide currentSlide = slides[i];
       tabs.add(Container(
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Container(
           margin: EdgeInsets.only(
@@ -178,12 +205,21 @@ class _SliderViewPageState extends State<SliderViewPage> {
 
       // Next button
       renderNextBtn: this.renderNextBtn(),
-
+      // highlightColorPrevBtn: Colors.transparent,
       // Done button
       renderDoneBtn: this.renderDoneBtn(),
       onDonePress: this.onDonePress,
       colorDoneBtn: primaryColor,
-      highlightColorDoneBtn: primaryColor,
+      colorPrevBtn: primaryColor,
+      // colorSkipBtn: primaryColor,
+      // widthPrevBtn: 60,
+      // borderRadiusPrevBtn: 30,
+      widthDoneBtn: 120,
+      isShowSkipBtn: false,
+      borderRadiusDoneBtn: 30,
+      // widthPrevBtn: 50,
+
+      // highlightColorDoneBtn: Colors.transparent,
 
       // Dot indicator
       colorDot: tgrey,
