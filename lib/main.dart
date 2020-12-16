@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/slider/profile-slider.dart';
 import 'package:petblock/pages/slider/slider-view.dart';
 
 import 'pages/login/login.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'slider': (context) => SliderViewPage(),
         'login': (context) => LoginPage(),
+        'create-user':(context) => ProfileSlider(),
       },
     );
   }

@@ -3,12 +3,12 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:petblock/styles/style.dart';
 
-class SliderViewPage extends StatefulWidget {
+class ProfileSlider extends StatefulWidget {
   @override
-  _SliderViewPageState createState() => _SliderViewPageState();
+  _ProfileSliderState createState() => _ProfileSliderState();
 }
 
-class _SliderViewPageState extends State<SliderViewPage> {
+class _ProfileSliderState extends State<ProfileSlider> {
   List<Slide> slides = [];
   Function goToTab;
   int currentTab = 0;
@@ -18,7 +18,7 @@ class _SliderViewPageState extends State<SliderViewPage> {
     super.initState();
     slides.add(
       new Slide(
-        title: "Pet Vet",
+        title: "Select User Type",
         maxLineTitle: 2,
         styleTitle: sText,
         description:
@@ -35,40 +35,22 @@ class _SliderViewPageState extends State<SliderViewPage> {
         onCenterItemPress: () {},
       ),
     );
-    slides.add(
-      new Slide(
-        title: "Pet Matching",
-        styleTitle: sText,
-        description: "If the pooch melts your heart, swipe right.",
-        styleDescription: tdesc,
-        marginDescription: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
-          top: 20.0,
-          bottom: 70.0,
-        ),
-        backgroundColor: twhite,
-        pathImage: 'assets/images/slide-2.png',
-      ),
-    );
-    slides.add(
-      new Slide(
-        title: "Pet Care",
-        styleTitle: sText,
-        description:
-            "The fur is Our Favorite Accessory.All the things that your pet deserves.",
-        styleDescription: tdesc,
-        marginDescription: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
-          top: 20.0,
-          bottom: 70.0,
-        ),
-        pathImage: 'assets/images/slide-3.png',
-        backgroundColor: twhite,
-        maxLineTextDescription: 3,
-      ),
-    );
+    // slides.add(
+    //   new Slide(
+    //     title: "Pet Matching",
+    //     styleTitle: sText,
+    //     description: "If the pooch melts your heart, swipe right.",
+    //     styleDescription: tdesc,
+    //     marginDescription: EdgeInsets.only(
+    //       left: 20.0,
+    //       right: 20.0,
+    //       top: 20.0,
+    //       bottom: 70.0,
+    //     ),
+    //     backgroundColor: twhite,
+    //     pathImage: 'assets/images/slide-2.png',
+    //   ),
+    // );
   }
 
   void onDonePress() {
@@ -133,42 +115,19 @@ class _SliderViewPageState extends State<SliderViewPage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Container(
-          margin: EdgeInsets.only(
-            // bottom: 0.0,
-            top: MediaQuery.of(context).size.height * 0.25,
-          ),
+          // margin: EdgeInsets.only(
+          //   // bottom: 0.0,
+          //   top: MediaQuery.of(context).size.height * 0.25,
+          // ),
           child: ListView(
             children: <Widget>[
-              GestureDetector(
-                child: Image.asset(
-                  currentSlide.pathImage,
-                  width: 200.0,
-                  height: 200.0,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Container(
-                child: Text(
+             Text(
                   currentSlide.title,
                   style: currentSlide.styleTitle,
                   textAlign: TextAlign.center,
                 ),
-                margin: EdgeInsets.only(top: 20.0),
-              ),
-              Container(
-                child: Text(
-                  currentSlide.description,
-                  style: currentSlide.styleDescription,
-                  textAlign: TextAlign.center,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                margin: EdgeInsets.only(
-                  top: 20.0,
-                  left: 40,
-                  right: 40,
-                ),
-              ),
+                //margin: EdgeInsets.only(top: 20.0),
+              //),
             ],
           ),
         ),
