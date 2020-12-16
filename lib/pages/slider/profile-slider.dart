@@ -12,6 +12,8 @@ class _ProfileSliderState extends State<ProfileSlider> {
   List<Slide> slides = [];
   Function goToTab;
   int currentTab = 0;
+  String radioItem = '';
+
   @override
   void initState() {
     // TODO: implement initState
@@ -20,37 +22,22 @@ class _ProfileSliderState extends State<ProfileSlider> {
       new Slide(
         title: "Select User Type",
         maxLineTitle: 2,
-        styleTitle: sText,
+        styleTitle: pText,
         description:
-            "Your pet. Our passion. Helping cats and dogs live better lives. Healthy pets are happy pets.",
+            "Please fill the following information to create your profile",
         styleDescription: tdesc,
-        marginDescription: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
-          top: 20.0,
-          bottom: 70.0,
-        ),
-        pathImage: 'assets/images/slide-1.png',
-        backgroundColor: twhite,
-        onCenterItemPress: () {},
       ),
     );
-    // slides.add(
-    //   new Slide(
-    //     title: "Pet Matching",
-    //     styleTitle: sText,
-    //     description: "If the pooch melts your heart, swipe right.",
-    //     styleDescription: tdesc,
-    //     marginDescription: EdgeInsets.only(
-    //       left: 20.0,
-    //       right: 20.0,
-    //       top: 20.0,
-    //       bottom: 70.0,
-    //     ),
-    //     backgroundColor: twhite,
-    //     pathImage: 'assets/images/slide-2.png',
-    //   ),
-    // );
+    slides.add(
+      new Slide(
+        title: "Let's create your profile",
+        maxLineTitle: 2,
+        styleTitle: pText,
+        description:
+            "Please fill the following information to create your profile",
+        styleDescription: tdesc,
+      ),
+    );
   }
 
   void onDonePress() {
@@ -111,29 +98,182 @@ class _ProfileSliderState extends State<ProfileSlider> {
     List<Widget> tabs = new List();
     for (int i = 0; i < slides.length; i++) {
       Slide currentSlide = slides[i];
-      tabs.add(Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Container(
-          // margin: EdgeInsets.only(
-          //   // bottom: 0.0,
-          //   top: MediaQuery.of(context).size.height * 0.25,
-          // ),
-          child: ListView(
-            children: <Widget>[
-             Text(
+      if (i == 0) {
+        tabs.add(
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              margin: EdgeInsets.only(
+                // bottom: 0.0,
+                left: 20,
+                right: 20,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  verticalSpace40,
+                  Text(
+                    currentSlide.title,
+                    style: currentSlide.styleTitle,
+                    textAlign: TextAlign.start,
+                  ),
+                  verticalSpace20,
+                  Container(
+                    child: Text(
+                      currentSlide.description,
+                      style: currentSlide.styleDescription,
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  verticalSpace40,
+                  _buildCards('petOwner'),
+                  verticalSpace40,
+                  _buildCards('servicePro'),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+      else if(i == 1){
+        tabs.add(
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Container(
+            margin: EdgeInsets.only(
+              // bottom: 0.0,
+              left: 20,
+              right: 20,
+            ),
+            child: ListView(
+              children: <Widget>[
+                verticalSpace40,
+                Text(
                   currentSlide.title,
                   style: currentSlide.styleTitle,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
                 ),
-                //margin: EdgeInsets.only(top: 20.0),
-              //),
-            ],
+                verticalSpace20,
+                Container(
+                  child: Text(
+                    currentSlide.description,
+                    style: currentSlide.styleDescription,
+                    textAlign: TextAlign.start,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+               //_addTextLable('Email Address'),
+              verticalSpace10,
+              buildTextField('Full Name*'),
+              verticalSpace40,
+              buildTextField('Email Id*'),
+              verticalSpace40,
+              buildTextField('Contact Number*'),
+              verticalSpace40,
+              buildTextField('Password*'),
+              verticalSpace40,
+              ],
+            ),
           ),
         ),
-      ));
+      );
+      }
     }
     return tabs;
+  }
+
+  _buildCards(val) {
+    return SizedBox(
+      child: Card(
+        shape: RoundedRectangleBorder(
+            side: new BorderSide(color: primaryColor, width: 2.0),
+            borderRadius: BorderRadius.circular(10.0)),
+        child: new Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Container(
+              margin: sliderImage,
+              width: 120.0,
+              height: 120.0,
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                //border: Border.all(color: Colors.black),
+                image: DecorationImage(
+                  image: new ExactAssetImage(val == 'petOwner'
+                      ? 'assets/images/petowner.png'
+                      : 'assets/images/serviceprovider.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 18.0),
+              child: Text(
+                val == 'petOwner' ? 'Pet Owner' : 'Service Provider',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+    TextField buildTextField(val) {
+    return TextField(
+      obscureText: val == "Password*" ? true : false,
+      autocorrect: true,
+      decoration: InputDecoration(
+        hintText: val,
+        hintStyle: TextStyle(color: Colors.grey),
+        filled: true,
+        fillColor: geryF9,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+          borderSide: BorderSide(color: geryF9, width: 1),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(
+            color: geryF9,
+          ),
+        ),
+      ),
+    );
+  }
+
+  _addTextLable(val) {
+    if (val == 'Invalid Password') {
+      return Text(
+        val,
+        textAlign: TextAlign.right,
+        style: TextStyle(
+            fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.red),
+      );
+    }
+    if (val == 'ForgotPassword') {
+      return Text(
+        val,
+        textAlign: TextAlign.right,
+        style: TextStyle(
+          fontSize: 16.0,
+          fontWeight: FontWeight.normal,
+          decoration: TextDecoration.underline,
+        ),
+      );
+    } else {
+      return Text(
+        val,
+        textAlign: TextAlign.left,
+        style: lgText,
+      );
+    }
   }
 
   @override
