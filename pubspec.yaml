@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   intro_slider: ^2.3.3
+  getwidget: ^1.2.4
   connectivity: ^2.0.2
   provider: ^4.3.2+3
   cupertino_icons: ^1.0.0
