@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:petblock/pages/slider/slider-view.dart';
-import 'package:petblock/styles/style.dart';
 
+import 'pages/add-pet/add-pet.dart';
+import 'pages/slider/slider-view.dart';
+import 'styles/style.dart';
 import 'pages/dashboard/dashboard_home.dart';
 import 'pages/login/login.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         'slider': (context) => SliderViewPage(),
         'login': (context) => LoginPage(),
         'dashboard': (context) => DashBoard(),
+        'add-pet': (context) => AddPet(),
       },
     );
   }
@@ -35,15 +37,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 

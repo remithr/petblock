@@ -61,9 +61,17 @@ final tcard = TextStyle(
   fontFamily: 'RobotoMono',
 );
 
+final ipBoxDecoration = BoxDecoration(
+  border: Border.all(
+    color: primaryColor,
+  ),
+  borderRadius: BorderRadius.circular(10.0),
+);
+
 final unselected = Color(0xFFBDC1D8);
 final appBackground = Color(0xFFFFFFFF);
 final primaryColor = Color(0xff39C7CE);
+final primaryColorLight = Color(0xFFEAF5F9);
 final twhite = Color(0xffffffff);
 final tgrey = Color(0xFFE5E5E5);
 

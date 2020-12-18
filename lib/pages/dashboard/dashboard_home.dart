@@ -57,8 +57,8 @@ class _DashBoardState extends State<DashBoard> {
       ]
     },
     {
-      "image": "assets/images/bowser.png",
-      "name": "Tom",
+      "image": "assets/images/max.png",
+      "name": "Max",
       "age": "1 year old",
       "services": [
         {
@@ -78,8 +78,71 @@ class _DashBoardState extends State<DashBoard> {
       ]
     },
     {
-      "image": "assets/images/cherry.png",
-      "name": "Jerry",
+      "image": "assets/images/melody.png",
+      "name": "Melody",
+      "age": "4 years old",
+      "services": [
+        {
+          "image": "assets/images/service-1.png",
+          "name": "Posh Pows",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        },
+        {
+          "image": "assets/images/service-2.png",
+          "name": "Enlighten Dogs",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        }
+      ]
+    },
+    {
+      "image": "assets/images/celine.png",
+      "name": "Celine",
+      "age": "4 years old",
+      "services": [
+        {
+          "image": "assets/images/service-1.png",
+          "name": "Posh Pows",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        },
+        {
+          "image": "assets/images/service-2.png",
+          "name": "Enlighten Dogs",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        }
+      ]
+    },
+    {
+      "image": "assets/images/oreo.png",
+      "name": "Oreo",
+      "age": "4 years old",
+      "services": [
+        {
+          "image": "assets/images/service-1.png",
+          "name": "Posh Pows",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        },
+        {
+          "image": "assets/images/service-2.png",
+          "name": "Enlighten Dogs",
+          "address": "American street, Main street",
+          "distance": "2,5km",
+          "meal": "4.5"
+        }
+      ]
+    },
+    {
+      "image": "assets/images/oreo.png",
+      "name": "Oreo",
       "age": "4 years old",
       "services": [
         {
@@ -99,6 +162,7 @@ class _DashBoardState extends State<DashBoard> {
       ]
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -109,61 +173,120 @@ class _DashBoardState extends State<DashBoard> {
             left: 20,
             right: 20,
           ),
+          // child: _selectedIndex == 0
+          //     ? _buildHomeWidget()
+          //     : _selectedIndex == 1
+          //         ? Container(
+          //             child: Center(
+          //               child: Text(
+          //                 'ONE',
+          //               ),
+          //             ),
+          //           )
+          //         : _selectedIndex == 2
+          //             ? Container(
+          //                 child: Center(
+          //                   child: Text('TWO'),
+          //                 ),
+          //               )
+          //             : _selectedIndex == 3
+          //                 ? _buildGridViewBlock()
+          //                 : Container(
+          //                     child: Center(
+          //                       child: Text('Messages Block'),
+          //                     ),
+          //                   ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildRow1(),
               verticalSpace20,
-              Text(
-                'Services',
-                style: titleStyle,
-              ),
-              _buildSubMenu(),
+              if (_selectedIndex == 0)
+                Text(
+                  'Services',
+                  style: titleStyle,
+                ),
+              if (_selectedIndex == 1)
+                Text(
+                  'Appointments',
+                  style: titleStyle,
+                ),
+              if (_selectedIndex == 2)
+                Text(
+                  'Payment Methods',
+                  style: titleStyle,
+                ),
+              if (_selectedIndex == 3)
+                Text(
+                  'My Pets',
+                  style: titleStyle,
+                ),
+              if (_selectedIndex == 0) _buildSubMenu(),
               verticalSpace05,
-              if (!addPet) _noPetsWidget(),
+              if (_selectedIndex == 0)
+                if (!addPet) _noPetsWidget(),
               // verticalSpace05,
-              if (!addPet)
-                _addPetButton()
-              else
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'My Pets',
-                            style: tabsStyle,
-                          ),
-                          SizedBox(width: 220),
-                          Text(
-                            'Add Pet',
-                            style: taddpet,
-                          ),
-                        ],
-                      ),
-                      verticalSpace05,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _petListWidget(),
-                          verticalSpace05,
-                          if (serviceList.length != 0)
-                            Text(
-                              'Services for ' + selectedPet['name'],
-                              style: tabsStyle,
-                            ),
-                          verticalSpace05,
-                          _servicesWidget(),
-                        ],
-                      ),
-                    ],
+              if (_selectedIndex == 0)
+                if (!addPet) _addPetButton() else _buildPetsSection(),
+              if (_selectedIndex == 1)
+                Container(
+                  child: Center(
+                    child: Text(
+                      'ONE',
+                    ),
                   ),
-                )
+                ),
+              if (_selectedIndex == 2)
+                Column(
+                  children: [
+                    verticalSpace10,
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: tgrey, width: 2.0),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: ListTile(
+                          leading: Image.asset(
+                            'assets/icons/paypal.png',
+                          ),
+                          title: Text('Paypal Email'),
+                          subtitle: Text('paypal@user.com'),
+                          trailing: Icon(Icons.check_box),
+                        ),
+                      ),
+                    ),
+                    verticalSpace10,
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: tgrey, width: 2.0),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: ListTile(
+                          leading: Image.asset(
+                            'assets/icons/scart.png',
+                          ),
+                          title: Text('Pay in person/ at store'),
+                          // subtitle: Text('paypal@user.com'),
+                          trailing: Icon(Icons.check_box),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              if (_selectedIndex == 3) _buildGridViewBlock(),
+              if (_selectedIndex == 4)
+                Container(
+                  child: Center(
+                    child: Text('Messages Section'),
+                  ),
+                ),
             ],
           ),
         ),
@@ -172,32 +295,14 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
-  Container _petListWidget() {
+  Container _buildGridViewBlock() {
     return Container(
-      height: 160,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext ctx, int i) {
-          // return Card(
-          //   margin: EdgeInsets.all(10),
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.circular(
-          //       10.0,
-          //     ),
-          //   ),
-          //   elevation: 2,
-          //   child: Container(
-          //     height: 150,
-          //     decoration: BoxDecoration(
-          //       borderRadius:
-          //           BorderRadius.all(Radius.circular(8.0)),
-          //       color: Colors.redAccent,
-          //     ),
-          //     child: Image.network(
-          //       imageList[i],
-          //     ),
-          //   ),
-          // );
+      height: MediaQuery.of(context).size.height * 0.73,
+      child: GridView.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        children: List.generate(imageList.length, (i) {
           return GestureDetector(
             onTap: () {
               print(imageList[i]);
@@ -210,24 +315,132 @@ class _DashBoardState extends State<DashBoard> {
                 // left: 8.0,
                 right: 8.0,
               ),
-              // child: ClipRRect(
-              //   borderRadius: BorderRadius.circular(8.0),
-              //   child: Container(
-              //     // margin: EdgeInsets.all(5),
-              //     // height: 150,
-              //     width: 150,
-              //     decoration: BoxDecoration(
-              //       image: DecorationImage(
-              //         image: NetworkImage(
-              //           imageList[i],
-              //         ),
-              //         fit: BoxFit.cover,
-              //         // alignment: Alignment.topCenter,
-              //       ),
-              //     ),
-              //     child: Text("YOUR TEXT"),
-              //   ),
-              // ),
+              child: Container(
+                width: 165,
+                // height: 180,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    10.0,
+                  ),
+                  color: primaryColorLight,
+                ),
+                child: Card(
+                  elevation: 2,
+                  // shadowColor: primaryColorLight,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      10.0,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      verticalSpace05,
+                      CircleAvatar(
+                        radius: 40,
+                        // backgroundColor: Color(0xffFDCF09),
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(
+                            imageList[i]['image'],
+                          ),
+                        ),
+                      ),
+                      verticalSpace05,
+                      Text(
+                        imageList[i]['name'],
+                        style: tabsStyle,
+                      ),
+                      verticalSpace05,
+                      Text(
+                        imageList[i]['age'],
+                        style: greyedText,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+
+  Column _buildHomeWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buildRow1(),
+        verticalSpace20,
+        Text(
+          'Services',
+          style: titleStyle,
+        ),
+        _buildSubMenu(),
+        verticalSpace05,
+        if (!addPet) _noPetsWidget(),
+        // verticalSpace05,
+        if (!addPet) _addPetButton() else _buildPetsSection()
+      ],
+    );
+  }
+
+  Padding _buildPetsSection() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'My Pets',
+                style: tabsStyle,
+              ),
+              SizedBox(width: 220),
+              Text(
+                'Add Pet',
+                style: taddpet,
+              ),
+            ],
+          ),
+          verticalSpace05,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _petListWidget(),
+              verticalSpace05,
+              if (serviceList.length != 0)
+                Text(
+                  'Services for ' + selectedPet['name'],
+                  style: tabsStyle,
+                ),
+              verticalSpace05,
+              _servicesWidget(),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _petListWidget() {
+    return Container(
+      height: 160,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext ctx, int i) {
+          return GestureDetector(
+            onTap: () {
+              print(imageList[i]);
+              serviceList = imageList[i]['services'];
+              selectedPet = imageList[i];
+              setState(() {});
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(
+                // left: 8.0,
+                right: 8.0,
+              ),
               child: Container(
                 width: 165,
                 // height: 180,
@@ -423,6 +636,7 @@ class _DashBoardState extends State<DashBoard> {
           label: 'Message',
         ),
       ],
+      type: BottomNavigationBarType.fixed,
       currentIndex: _selectedIndex,
       selectedItemColor: primaryColor,
       unselectedItemColor: unselected,
@@ -544,11 +758,11 @@ class _DashBoardState extends State<DashBoard> {
             Icon(
               Icons.search,
             ),
-            verticalSpace05,
+            horizontalSpace10,
             Icon(
-              Icons.notifications_none_outlined,
+              PetblockApp.notification,
             ),
-            verticalSpace05,
+            horizontalSpace10,
             Image.asset(
               'assets/icons/avatar.png',
             ),
