@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/login/email-verification.dart';
+import 'package:petblock/pages/login/forgot-password.dart';
+import 'package:petblock/pages/login/login.dart';
 import 'package:petblock/pages/slider/profile-slider.dart';
 import 'package:petblock/pages/slider/slider-view.dart';
 
-import 'pages/login/login.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
         'slider': (context) => SliderViewPage(),
         'login': (context) => LoginPage(),
         'create-user':(context) => ProfileSlider(),
+        'forgot-pass':(context) => ForgotPassword(),
+        'email-ver' : (context) => EmailVerifyScreen(),
       },
     );
   }

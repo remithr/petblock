@@ -11,8 +11,38 @@ class ProfileSlider extends StatefulWidget {
 class _ProfileSliderState extends State<ProfileSlider> {
   List<Slide> slides = [];
   Function goToTab;
+  bool _checkVal = false;
   int currentTab = 0;
   String radioItem = '';
+  String _currentSelectedValue;
+  var _countries = [
+    "India",
+    "America",
+    "China",
+    "Japan",
+    "South Africa",
+    "Belgium",
+    "Germany",
+    "Ireland"
+  ];
+
+  var _states = [
+    "Maharashtra",
+    "Gujarat",
+    "Rajasthan",
+    "Uttar Pradesh",
+    "Karnataka",
+    "Kerala",
+  ];
+
+  var _city = [
+    "Nashik",
+    "Mumbai",
+    "Panvel",
+    "Igatpuri",
+    "Pune",
+    "Jalgaon",
+  ];
 
   @override
   void initState() {
@@ -22,7 +52,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
       new Slide(
         title: "Select User Type",
         maxLineTitle: 2,
-        styleTitle: pText,
+        styleTitle: pTitle,
         description:
             "Please fill the following information to create your profile",
         styleDescription: tdesc,
@@ -32,7 +62,29 @@ class _ProfileSliderState extends State<ProfileSlider> {
       new Slide(
         title: "Let's create your profile",
         maxLineTitle: 2,
-        styleTitle: pText,
+        styleTitle: pTitle,
+        description:
+            "Please fill the following information to create your profile",
+        styleDescription: tdesc,
+      ),
+    );
+
+    slides.add(
+      new Slide(
+        title: "Add Location Details",
+        maxLineTitle: 2,
+        styleTitle: pTitle,
+        description:
+            "Please fill the following information to create your profile",
+        styleDescription: tdesc,
+      ),
+    );
+
+    slides.add(
+      new Slide(
+        title: "Calender Sync",
+        maxLineTitle: 2,
+        styleTitle: pTitle,
         description:
             "Please fill the following information to create your profile",
         styleDescription: tdesc,
@@ -43,7 +95,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
   void onDonePress() {
     // Back to the first tab
     // this.goToTab(0);
-    Navigator.of(context).pushReplacementNamed('login');
+    Navigator.of(context).pushReplacementNamed('email-ver');
   }
 
   void onTabChangeCompleted(index) {
@@ -73,7 +125,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
   Widget renderDoneBtn() {
     return RawMaterialButton(
       onPressed: () {
-        Navigator.of(context).pushReplacementNamed('login');
+        Navigator.of(context).pushReplacementNamed('email-ver');
       },
       elevation: 2.0,
       fillColor: primaryColor,
@@ -136,54 +188,281 @@ class _ProfileSliderState extends State<ProfileSlider> {
             ),
           ),
         );
-      }
-      else if(i == 1){
+      } else if (i == 1) {
         tabs.add(
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Container(
-            margin: EdgeInsets.only(
-              // bottom: 0.0,
-              left: 20,
-              right: 20,
-            ),
-            child: ListView(
-              children: <Widget>[
-                verticalSpace40,
-                Text(
-                  currentSlide.title,
-                  style: currentSlide.styleTitle,
-                  textAlign: TextAlign.start,
-                ),
-                verticalSpace20,
-                Container(
-                  child: Text(
-                    currentSlide.description,
-                    style: currentSlide.styleDescription,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              margin: EdgeInsets.only(
+                // bottom: 0.0,
+                left: 20,
+                right: 20,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  verticalSpace40,
+                  Text(
+                    currentSlide.title,
+                    style: currentSlide.styleTitle,
                     textAlign: TextAlign.start,
-                    maxLines: 5,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-               //_addTextLable('Email Address'),
-              verticalSpace10,
-              buildTextField('Full Name*'),
-              verticalSpace40,
-              buildTextField('Email Id*'),
-              verticalSpace40,
-              buildTextField('Contact Number*'),
-              verticalSpace40,
-              buildTextField('Password*'),
-              verticalSpace40,
-              ],
+                  verticalSpace20,
+                  Container(
+                    child: Text(
+                      currentSlide.description,
+                      style: currentSlide.styleDescription,
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  //_addTextLable('Email Address'),
+                  verticalSpace10,
+                  buildTextField('Full Name*'),
+                  verticalSpace40,
+                  buildTextField('Email Id*'),
+                  verticalSpace40,
+                  buildTextField('Contact Number*'),
+                  verticalSpace40,
+                  buildTextField('Password*'),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      } else if (i == 2) {
+        tabs.add(
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              margin: EdgeInsets.only(
+                // bottom: 0.0,
+                left: 20,
+                right: 20,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  verticalSpace40,
+                  Text(
+                    currentSlide.title,
+                    style: currentSlide.styleTitle,
+                    textAlign: TextAlign.start,
+                  ),
+                  verticalSpace20,
+                  Container(
+                    child: Text(
+                      currentSlide.description,
+                      style: currentSlide.styleDescription,
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  //_addTextLable('Email Address'),
+                  verticalSpace10,
+                  _buildDropdown('country'),
+                  verticalSpace40,
+                  _buildDropdown('state'),
+                  verticalSpace40,
+                  _buildDropdown('city'),
+                  verticalSpace40,
+                  buildTextField('Address*'),
+                  verticalSpace40,
+                  _buildCheckBtn(),
+                ],
+              ),
+            ),
+          ),
+        );
+      } else if (i == 3) {
+        tabs.add(
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Container(
+              margin: EdgeInsets.only(
+                // bottom: 0.0,
+                left: 20,
+                right: 20,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  verticalSpace40,
+                  Stack(
+                    children: [
+                      Text(
+                        currentSlide.title,
+                        style: currentSlide.styleTitle,
+                        //textAlign: TextAlign.start,
+                      ),
+                      Positioned(
+                        right: 25,
+                        //top:15,
+                        child: Text(
+                          'skip',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 14.0,
+                            decoration: TextDecoration.underline,
+                          ),
+                          textAlign: TextAlign.end,
+                        ),
+                      )
+                    ],
+                  ),
+                  verticalSpace20,
+                  Container(
+                    child: Text(
+                      currentSlide.description,
+                      style: currentSlide.styleDescription,
+                      textAlign: TextAlign.start,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  verticalSpace40,
+                  _buildCalendarCards('outlook'),
+                  verticalSpace40,
+                  _buildCalendarCards('gsuite'),
+                  verticalSpace40,
+                  _buildCalendarCards('icalendar'),
+                  //_addTextLable('Email Address'),
+                  // verticalSpace10,
+                  // _buildDropdown('country'),
+                  // verticalSpace40,
+                  // _buildDropdown('state'),
+                  // verticalSpace40,
+                  // _buildDropdown('city'),
+                  // verticalSpace40,
+                  // buildTextField('Address*'),
+                  // verticalSpace40,
+                  // _buildCheckBtn(),
+                ],
+              ),
+            ),
+          ),
+        );
       }
     }
     return tabs;
+  }
+
+  _buildCalendarCards(val) {
+    double swidth = MediaQuery.of(context).size.width;
+    print('width $swidth');
+    double sheight = MediaQuery.of(context).size.height;
+    print('height $sheight');
+    return SizedBox(
+      height: 70.0,
+      width: MediaQuery.of(context).size.width - 350 ,
+      child: Card(
+        color: primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                 val == 'outlook' ? 'Outlook' : val == 'gsuite' ? 'Gsuite' : 'Icalendar',
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16.0, color: twhite, fontWeight: FontWeight.w700),
+              ),
+              //_buildCheckBtn()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildCheckBtn() {
+    return Row(
+      children: <Widget>[
+        SizedBox(
+          width: 10,
+        ),
+        Checkbox(
+          checkColor: Colors.greenAccent,
+          activeColor: Colors.red,
+          value: _checkVal,
+          onChanged: (bool value) {
+            print('on click val $value');
+            setState(() {
+              _checkVal = value;
+            });
+          },
+        ),
+        Text(
+          'I agree to all terms and conditions ',
+          style: TextStyle(fontSize: 17.0),
+        ),
+      ],
+    );
+  }
+
+  _buildDropdown(val) {
+    return FormField<String>(
+      builder: (FormFieldState<String> state) {
+        return InputDecorator(
+          baseStyle: TextStyle(backgroundColor: greyF9),
+          decoration: InputDecoration(
+            //labelStyle: textStyle,
+            filled: true,
+            fillColor: greyF9,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.0)),
+              borderSide: BorderSide(color: greyF9, width: 1),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderSide: BorderSide(
+                color: greyF9,
+              ),
+            ),
+            errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
+          ),
+          isEmpty: _currentSelectedValue == '',
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              hint: Text(val),
+              value: _currentSelectedValue,
+              isDense: true,
+              onChanged: (String newValue) {
+                setState(() {
+                  _currentSelectedValue = newValue;
+                  state.didChange(newValue);
+                });
+              },
+              items: val == 'country'
+                  ? _countries.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList()
+                  : val == 'state'
+                      ? _states.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList()
+                      : _city.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   _buildCards(val) {
@@ -225,7 +504,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
     );
   }
 
-    TextField buildTextField(val) {
+  TextField buildTextField(val) {
     return TextField(
       obscureText: val == "Password*" ? true : false,
       autocorrect: true,
@@ -233,15 +512,15 @@ class _ProfileSliderState extends State<ProfileSlider> {
         hintText: val,
         hintStyle: TextStyle(color: Colors.grey),
         filled: true,
-        fillColor: geryF9,
+        fillColor: greyF9,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: geryF9, width: 1),
+          borderSide: BorderSide(color: greyF9, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           borderSide: BorderSide(
-            color: geryF9,
+            color: greyF9,
           ),
         ),
       ),

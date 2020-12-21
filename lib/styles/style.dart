@@ -14,8 +14,15 @@ final pText = TextStyle(
   fontFamily: 'RobotoMono',
 );
 
+final pTitle = TextStyle(
+  color: Colors.black,
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'RobotoMono',
+);
+
 final tdesc = TextStyle(
-  color: Color(0xffA8A8A8),
+  color: greyA8,
   fontSize: 20.0,
   // fontStyle: FontStyle.italic,
   fontFamily: 'Raleway',
@@ -28,6 +35,25 @@ final lgText = TextStyle(
   fontSize: 14.0,
   fontWeight: FontWeight.w400,
   fontFamily: 'RobotoMono',
+);
+
+final fgText = TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.w700,
+);
+
+final fgemailText = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w700,
+);
+
+final fglinkText = TextStyle(
+  fontSize: 14.0,
+  color:greyA8
+);
+
+final verticalSpace60 = SizedBox(
+  height: 60,
 );
 
 final verticalSpace40 = SizedBox(
@@ -46,4 +72,5 @@ final primaryColor = Color(0xff39C7CE);
 final twhite = Color(0xffffffff);
 final tgrey = Color(0xFFE5E5E5);
 final fbColor = Color(0xff3B5998);
-final geryF9 = Color(0xffF9F9F9);
+final greyF9 = Color(0xffF9F9F9);
+final greyA8 = Color(0xffA8A8A8);
