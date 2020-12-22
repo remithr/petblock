@@ -13,155 +13,6 @@ class _DashBoardState extends State<DashBoard> {
   bool addPet = false;
   List serviceList = [];
   Map selectedPet = {};
-  final List<Map<String, dynamic>> imageList = [
-    {
-      "image": "assets/images/bowser.png",
-      "name": "Bowser",
-      "age": "2 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/cherry.png",
-      "name": "Cherry",
-      "age": "3 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/max.png",
-      "name": "Max",
-      "age": "1 year old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/melody.png",
-      "name": "Melody",
-      "age": "4 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/celine.png",
-      "name": "Celine",
-      "age": "4 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/oreo.png",
-      "name": "Oreo",
-      "age": "4 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-    {
-      "image": "assets/images/oreo.png",
-      "name": "Oreo",
-      "age": "4 years old",
-      "services": [
-        {
-          "image": "assets/images/service-1.png",
-          "name": "Posh Pows",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        },
-        {
-          "image": "assets/images/service-2.png",
-          "name": "Enlighten Dogs",
-          "address": "American street, Main street",
-          "distance": "2,5km",
-          "meal": "4.5"
-        }
-      ]
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +83,7 @@ class _DashBoardState extends State<DashBoard> {
                 Container(
                   child: Center(
                     child: Text(
-                      'ONE',
+                      'TAB ONE :  APPOINTMENTS',
                     ),
                   ),
                 ),
@@ -284,7 +135,7 @@ class _DashBoardState extends State<DashBoard> {
               if (_selectedIndex == 4)
                 Container(
                   child: Center(
-                    child: Text('Messages Section'),
+                    child: Text('TAB 4 : MESSAGES'),
                   ),
                 ),
             ],
@@ -305,7 +156,7 @@ class _DashBoardState extends State<DashBoard> {
         children: List.generate(imageList.length, (i) {
           return GestureDetector(
             onTap: () {
-              print(imageList[i]);
+              // print(imageList[i]);
               serviceList = imageList[i]['services'];
               selectedPet = imageList[i];
               setState(() {});
@@ -334,6 +185,20 @@ class _DashBoardState extends State<DashBoard> {
                   ),
                   child: Column(
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 10.0,
+                          top: 10.0,
+                        ),
+                        child: Align(
+                          child: Icon(
+                            imageList[i]['gender'] == "male"
+                                ? PetblockApp.male
+                                : PetblockApp.female,
+                          ),
+                          alignment: Alignment.topRight,
+                        ),
+                      ),
                       verticalSpace05,
                       CircleAvatar(
                         radius: 40,
@@ -348,7 +213,7 @@ class _DashBoardState extends State<DashBoard> {
                       verticalSpace05,
                       Text(
                         imageList[i]['name'],
-                        style: tabsStyle,
+                        style: titleStyle,
                       ),
                       verticalSpace05,
                       Text(
@@ -394,7 +259,7 @@ class _DashBoardState extends State<DashBoard> {
             children: [
               Text(
                 'My Pets',
-                style: tabsStyle,
+                style: titleStyle,
               ),
               SizedBox(width: 220),
               Text(
@@ -412,7 +277,7 @@ class _DashBoardState extends State<DashBoard> {
               if (serviceList.length != 0)
                 Text(
                   'Services for ' + selectedPet['name'],
-                  style: tabsStyle,
+                  style: titleStyle,
                 ),
               verticalSpace05,
               _servicesWidget(),
@@ -467,7 +332,7 @@ class _DashBoardState extends State<DashBoard> {
                       verticalSpace05,
                       Text(
                         imageList[i]['name'],
-                        style: tabsStyle,
+                        style: titleStyle,
                       ),
                       verticalSpace05,
                       Text(
@@ -680,7 +545,7 @@ class _DashBoardState extends State<DashBoard> {
               verticalSpace05,
               Text(
                 'Care',
-                style: tabsStyle,
+                style: titleStyle,
               ),
             ],
           ),
@@ -694,7 +559,7 @@ class _DashBoardState extends State<DashBoard> {
               verticalSpace05,
               Text(
                 'Training',
-                style: tabsStyle,
+                style: titleStyle,
               ),
             ],
           ),
@@ -708,7 +573,7 @@ class _DashBoardState extends State<DashBoard> {
               verticalSpace05,
               Text(
                 'Vet',
-                style: tabsStyle,
+                style: titleStyle,
               ),
             ],
           ),
@@ -722,7 +587,7 @@ class _DashBoardState extends State<DashBoard> {
               verticalSpace05,
               Text(
                 'Matching',
-                style: tabsStyle,
+                style: titleStyle,
               ),
             ],
           ),
@@ -736,7 +601,7 @@ class _DashBoardState extends State<DashBoard> {
               verticalSpace05,
               Text(
                 'Places',
-                style: tabsStyle,
+                style: titleStyle,
               ),
             ],
           ),
@@ -763,8 +628,14 @@ class _DashBoardState extends State<DashBoard> {
               PetblockApp.notification,
             ),
             horizontalSpace10,
-            Image.asset(
-              'assets/icons/avatar.png',
+            GestureDetector(
+              onTap: () {
+                print('Go to Profile');
+                Navigator.of(context).pushNamed('profile');
+              },
+              child: Image.asset(
+                'assets/icons/avatar.png',
+              ),
             ),
             // CircleAvatar(
 

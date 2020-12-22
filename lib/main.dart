@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/edit-profile/edit-profile.dart';
 
 import 'pages/add-pet/add-pet.dart';
+import 'pages/profile/profile.dart';
 import 'pages/slider/slider-view.dart';
 import 'styles/style.dart';
 import 'pages/dashboard/dashboard_home.dart';
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
         'login': (context) => LoginPage(),
         'dashboard': (context) => DashBoard(),
         'add-pet': (context) => AddPet(),
+        'profile': (context) => ProfilePage(),
+        'edit-profile': (context) => EditProfilePage(),
       },
     );
   }

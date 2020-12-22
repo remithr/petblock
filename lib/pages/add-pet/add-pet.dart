@@ -20,7 +20,7 @@ class _AddPetState extends State<AddPet> {
               children: [
                 Text(
                   'Add Pet',
-                  style: tabsStyle,
+                  style: titleStyle,
                 ),
                 verticalSpace10,
                 _addButtonWidget(),
