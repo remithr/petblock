@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/dashboard/appointments.dart';
+import 'package:petblock/pages/dashboard/payment.dart';
 import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -24,34 +27,11 @@ class _DashBoardState extends State<DashBoard> {
             left: 20,
             right: 20,
           ),
-          // child: _selectedIndex == 0
-          //     ? _buildHomeWidget()
-          //     : _selectedIndex == 1
-          //         ? Container(
-          //             child: Center(
-          //               child: Text(
-          //                 'ONE',
-          //               ),
-          //             ),
-          //           )
-          //         : _selectedIndex == 2
-          //             ? Container(
-          //                 child: Center(
-          //                   child: Text('TWO'),
-          //                 ),
-          //               )
-          //             : _selectedIndex == 3
-          //                 ? _buildGridViewBlock()
-          //                 : Container(
-          //                     child: Center(
-          //                       child: Text('Messages Block'),
-          //                     ),
-          //                   ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildRow1(),
-              verticalSpace20,
+              verticalSpace10,
               if (_selectedIndex == 0)
                 Text(
                   'Services',
@@ -79,57 +59,8 @@ class _DashBoardState extends State<DashBoard> {
               // verticalSpace05,
               if (_selectedIndex == 0)
                 if (!addPet) _addPetButton() else _buildPetsSection(),
-              if (_selectedIndex == 1)
-                Container(
-                  child: Center(
-                    child: Text(
-                      'TAB ONE :  APPOINTMENTS',
-                    ),
-                  ),
-                ),
-              if (_selectedIndex == 2)
-                Column(
-                  children: [
-                    verticalSpace10,
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: tgrey, width: 2.0),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Image.asset(
-                            'assets/icons/paypal.png',
-                          ),
-                          title: Text('Paypal Email'),
-                          subtitle: Text('paypal@user.com'),
-                          trailing: Icon(Icons.check_box),
-                        ),
-                      ),
-                    ),
-                    verticalSpace10,
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: tgrey, width: 2.0),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Image.asset(
-                            'assets/icons/scart.png',
-                          ),
-                          title: Text('Pay in person/ at store'),
-                          // subtitle: Text('paypal@user.com'),
-                          trailing: Icon(Icons.check_box),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              if (_selectedIndex == 1) AppointmentsTab(),
+              if (_selectedIndex == 2) PaymentSection(),
 
               if (_selectedIndex == 3) _buildGridViewBlock(),
               if (_selectedIndex == 4)
@@ -250,41 +181,44 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
-  Padding _buildPetsSection() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                'My Pets',
-                style: titleStyle,
-              ),
-              SizedBox(width: 220),
-              Text(
+  Column _buildPetsSection() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              'My Pets',
+              style: titleStyle,
+            ),
+            SizedBox(width: 220),
+            TextButton(
+              onPressed: () {
+                print('add pet page 267');
+                Navigator.of(context).pushNamed('add-pet');
+              },
+              child: Text(
                 'Add Pet',
                 style: taddpet,
               ),
-            ],
-          ),
-          verticalSpace05,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _petListWidget(),
-              verticalSpace05,
-              if (serviceList.length != 0)
-                Text(
-                  'Services for ' + selectedPet['name'],
-                  style: titleStyle,
-                ),
-              verticalSpace05,
-              _servicesWidget(),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        verticalSpace05,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _petListWidget(),
+            verticalSpace05,
+            if (serviceList.length != 0)
+              Text(
+                'Services for ' + selectedPet['name'],
+                style: titleStyle,
+              ),
+            verticalSpace05,
+            _servicesWidget(),
+          ],
+        ),
+      ],
     );
   }
 

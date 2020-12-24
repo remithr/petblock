@@ -32,12 +32,23 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              // Icons.logout,
-              PetblockApp.signout,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () {
+              print('Signout Tapped');
+              Map values = {
+                "title": "Are you sure?",
+                "message1": "Are you sure?",
+                "message2": "Do you really want to end the session?",
+              };
+              _showConfirmationDialog(context, values);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                // Icons.logout,
+                PetblockApp.signout,
+                color: Colors.black,
+              ),
             ),
           ),
         ],
@@ -68,6 +79,82 @@ class ProfilePage extends StatelessWidget {
           _gridPetWidget(context),
         ],
       ),
+    );
+  }
+
+  Future<void> _showConfirmationDialog(BuildContext context, Map values) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // title: Center(
+          //   child: Text(
+          //     values['title'],
+          //   ),
+          // ),
+          content: SingleChildScrollView(
+            // child: ListBody(
+            //   children: <Widget>[
+            //     Text(
+            //       values['message1'],
+            //       style: TextStyle(
+            //         fontSize: 18,
+            //         fontWeight: FontWeight.bold,
+            //         color: Colors.black,
+            //       ),
+            //     ),
+            //     Text(
+            //       values['message2'],
+            //       style: TextStyle(
+            //         fontSize: 14,
+            //         fontWeight: FontWeight.normal,
+            //         color: unselected,
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            child: Center(
+              child: Column(
+                children: [
+                  verticalSpace20,
+                  Text(
+                    values['title'],
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  verticalSpace20,
+                  Text(
+                    values['message2'],
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: unselected,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Yes'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 

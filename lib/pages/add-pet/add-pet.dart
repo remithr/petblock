@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
 
 class AddPet extends StatefulWidget {
@@ -8,21 +10,43 @@ class AddPet extends StatefulWidget {
 
 class _AddPetState extends State<AddPet> {
   final _formKey = GlobalKey<FormState>();
+  bool date = false;
+  bool permission = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            // color: unselected,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+              color: unselected,
+            ),
+            child: BackButton(
+              color: Colors.black,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          'Add Pet',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 40, right: 20),
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Add Pet',
-                  style: titleStyle,
-                ),
-                verticalSpace10,
                 _addButtonWidget(),
                 Form(
                   key: _formKey,
@@ -30,7 +54,7 @@ class _AddPetState extends State<AddPet> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Pet Name*'),
+                      _textFieldTitle('Pet Name*'),
                       verticalSpace10,
                       _formField(),
                       verticalSpace10,
@@ -42,9 +66,9 @@ class _AddPetState extends State<AddPet> {
                                 child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Species'),
+                                _textFieldTitle('Species'),
                                 verticalSpace05,
-                                _formField(),
+                                _formIconField('Species'),
                               ],
                             )),
                             horizontalSpace05,
@@ -53,9 +77,9 @@ class _AddPetState extends State<AddPet> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Breed'),
+                                  _textFieldTitle('Breed'),
                                   verticalSpace05,
-                                  _formField(),
+                                  _formIconField('Breed'),
                                 ],
                               ),
                             ),
@@ -63,37 +87,24 @@ class _AddPetState extends State<AddPet> {
                         ),
                       ),
                       verticalSpace10,
-                      Text('Birth Date'),
+                      _textFieldTitle('Birth Date'),
                       verticalSpace05,
-                      _formField(),
+                      _formIconField('Birth Date'),
                       verticalSpace10,
-                      Text('Pedigree Certificate'),
+                      _textFieldTitle('Pedigree Certificate'),
                       verticalSpace05,
-                      _formField(),
-                      verticalSpace10,
-                      verticalSpace10,
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                          child: RaisedButton(
-                            color: primaryColor,
-                            // elevation: 5.0,
-                            onPressed: () {},
-                            child: Text(
-                              'Save Profile',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      _formIconField('Pedigree Certificate'),
+                      verticalSpace20,
+                      _uploadField('Upload Vaccine Booklet'),
+                      verticalSpace20,
+                      _uploadField('Upload More Pet Images'),
+                      verticalSpace20,
+                      _buildSwitchSection('Date My Pet'),
+                      verticalSpace20,
+                      _buildSwitchSection(
+                          'Participate in marketing revenue share program(Coming Soon)?'),
+                      verticalSpace20,
+                      _addPetButton(context),
                     ],
                   ),
                 ),
@@ -101,6 +112,128 @@ class _AddPetState extends State<AddPet> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Padding _buildSwitchSection(val) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 8.0,
+        right: 8.0,
+      ),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 50,
+        // decoration: upBoxDecoration,
+        // color: unselected,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: Text(
+                val,
+                style: textfieldTitle,
+                softWrap: true,
+                maxLines: 3,
+              ),
+            ),
+            // Switch(
+            //   value: date,
+            //   onChanged: toggleSwitch,
+            // ),
+            if (val == 'Date My Pet')
+              CupertinoSwitch(
+                value: date,
+                onChanged: toggleDate,
+              ),
+            if (val != 'Date My Pet')
+              CupertinoSwitch(
+                value: permission,
+                onChanged: togglePermission,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void toggleDate(bool value) {
+    date = !date;
+    if (date) {
+      print('Delete popup');
+    }
+    setState(() {});
+  }
+
+  void togglePermission(bool value) {
+    permission = !permission;
+    if (permission) {
+      print('Permission popup');
+    }
+    setState(() {});
+  }
+
+  Container _addPetButton(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(20),
+      // ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        child: RaisedButton(
+          color: primaryColor,
+          // elevation: 5.0,
+          onPressed: () {},
+          child: Text(
+            'Add Pet',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              10,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Text _textFieldTitle(fieldName) {
+    return Text(
+      fieldName,
+      style: textfieldTitle,
+    );
+  }
+
+  Container _uploadField(val) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      decoration: upBoxDecoration,
+      //color: unselected,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              val,
+              style: textfieldTitle,
+            ),
+          ),
+          Icon(
+            Icons.upload_outlined,
+            // PetblockApp.
+            // .,
+          )
+        ],
       ),
     );
   }
@@ -121,6 +254,63 @@ class _AddPetState extends State<AddPet> {
           contentPadding: EdgeInsets.only(
             top: 14.0,
           ),
+        ),
+      ),
+    );
+  }
+
+  Container _formIconField(val) {
+    // print(val);
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      decoration: ipBoxDecoration,
+      child: TextFormField(
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(
+            top: 14.0,
+          ),
+          suffixIcon: val == 'Species'
+              ? IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                  ),
+                  onPressed: () {
+                    print('calendar pressed');
+                  },
+                )
+              : val == 'Breed'
+                  ? IconButton(
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                      ),
+                      onPressed: () {
+                        print('calendar pressed');
+                      },
+                    )
+                  : val == 'Birth Date'
+                      ? IconButton(
+                          icon: Icon(
+                            PetblockApp.calendar,
+                          ),
+                          onPressed: () {
+                            print('calendar pressed');
+                          },
+                        )
+                      : IconButton(
+                          icon: Icon(
+                            Icons.close,
+                          ),
+                          onPressed: () {
+                            print('calendar pressed');
+                          },
+                        ),
         ),
       ),
     );

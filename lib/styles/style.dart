@@ -27,6 +27,13 @@ final titleStyle = TextStyle(
   fontFamily: 'RobotoMono',
 );
 
+final titleStyleWhite = TextStyle(
+  color: Color(0xffffffff),
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'RobotoMono',
+);
+
 // final tabsStyle = TextStyle(
 //   color: Color(0xff000000),
 //   fontSize: 16.0,
@@ -41,6 +48,12 @@ final greyedText = TextStyle(
 );
 final textfieldTitle = TextStyle(
   color: Color(0xff87999D),
+  fontSize: 14.0,
+  fontFamily: 'RobotoMono',
+);
+
+final textfieldTitleWhite = TextStyle(
+  color: Color(0xffffffff),
   fontSize: 14.0,
   fontFamily: 'RobotoMono',
 );
@@ -72,12 +85,21 @@ final ipBoxDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
 );
 
+final upBoxDecoration = BoxDecoration(
+  // border: Border.all(
+  //   color: primaryColor,
+  // ),
+  color: Color(0xFFF9F9F9),
+  borderRadius: BorderRadius.circular(10.0),
+);
+
 final unselected = Color(0xFFBDC1D8);
 final appBackground = Color(0xFFFFFFFF);
 final primaryColor = Color(0xff39C7CE);
 final primaryColorLight = Color(0xFFEAF5F9);
 final twhite = Color(0xffffffff);
 final tgrey = Color(0xFFE5E5E5);
+final upText = Color(0xFF87999D);
 
 final verticalSpace05 = SizedBox(
   height: 5,

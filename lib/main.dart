@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/dashboard/appointment_details.dart';
 import 'package:petblock/pages/edit-profile/edit-profile.dart';
 
 import 'pages/add-pet/add-pet.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         'add-pet': (context) => AddPet(),
         'profile': (context) => ProfilePage(),
         'edit-profile': (context) => EditProfilePage(),
+        'appointment-details': (context) => AppointmentDetails(),
       },
     );
   }
