@@ -27,7 +27,7 @@ class AppointmentDetails extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Edit Profile',
+          'Appointment Details',
           style: TextStyle(
             color: Colors.black,
           ),
@@ -36,7 +36,6 @@ class AppointmentDetails extends StatelessWidget {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: [
           Center(
             child: Stack(
@@ -128,12 +127,12 @@ class AppointmentDetails extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Age',
+                          'Species',
                           style: textfieldTitle,
                         ),
                         verticalSpace05,
                         Text(
-                          appointment['age'],
+                          appointment['species'],
                           style: titleStyle,
                         ),
                       ],
@@ -143,13 +142,69 @@ class AppointmentDetails extends StatelessWidget {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
+          verticalSpace40,
+          verticalSpace40,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 15.0,
+              right: 15.0,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('1'),
-                Text('2'),
+                // Text('1'),
+                // Text('2'),
+                Container(
+                  width: 180.0,
+                  height: 60,
+                  child: OutlineButton(
+                    child: Text(
+                      'No',
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                      // side: BorderSide(
+                      //   color: primaryColor,
+                      // ),
+                    ),
+                    highlightColor: primaryColor,
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                    ),
+                    onPressed: () {
+                      print('on pressed');
+                    },
+                  ),
+                ),
+                Container(
+                  width: 180.0,
+                  height: 60,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                      side: BorderSide(
+                        color: primaryColor,
+                      ),
+                    ),
+                    color: primaryColor,
+                    child: Text(
+                      'Cancel Appointment',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      print('on pressed');
+                    },
+                  ),
+                ),
               ],
             ),
           )

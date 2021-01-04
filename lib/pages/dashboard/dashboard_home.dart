@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:petblock/dummy/dummy_data.dart';
 import 'package:petblock/pages/dashboard/appointments.dart';
 import 'package:petblock/pages/dashboard/payment.dart';
 import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
-import 'package:table_calendar/table_calendar.dart';
+// import 'package:table_calendar/table_calendar.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -65,8 +66,42 @@ class _DashBoardState extends State<DashBoard> {
               if (_selectedIndex == 3) _buildGridViewBlock(),
               if (_selectedIndex == 4)
                 Container(
-                  child: Center(
-                    child: Text('TAB 4 : MESSAGES'),
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: ListView.builder(
+                    itemCount: messageList.length,
+                    itemBuilder: (BuildContext ctx, int i) {
+                      return ListTile(
+                        // title: Text(
+                        //   messageList[i]['title'],
+                        //   style: TextStyle(
+                        //     color: Colors.black,
+                        //   ),
+                        // ),
+
+                        // leading: Image.asset(
+                        //   'assets/icons/paypal.png',
+                        // ),
+                        leading: CircleAvatar(
+                          backgroundImage: AssetImage(
+                            messageList[i]['img'],
+                          ),
+                        ),
+                        title: Text(
+                          messageList[i]['title'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                          ),
+                        ),
+                        subtitle: Text(
+                          messageList[i]['subtitle'],
+                          style: TextStyle(
+                            fontSize: 12.0,
+                          ),
+                        ),
+                        // trailing: Icon(Icons.more_vert),
+                      );
+                    },
                   ),
                 ),
             ],

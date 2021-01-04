@@ -117,7 +117,7 @@ class _AppointmentsTabState extends State<AppointmentsTab> {
         _buildTableCalendar(),
         // const SizedBox(height: 4.0),
         Container(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: MediaQuery.of(context).size.height * 0.15,
           // child: _buildEventList(),
           child: _eventList(),
         ),
