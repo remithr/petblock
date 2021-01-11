@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:petblock/pages/dashboard/appointment_details.dart';
 import 'package:petblock/pages/edit-profile/edit-profile.dart';
+import 'package:petblock/pages/pet-care/pet-care-home.dart';
+import 'package:petblock/pages/pet-details/pet-details.dart';
 
 import 'pages/add-pet/add-pet.dart';
+import 'pages/pet-care/pet-care-details.dart';
 import 'pages/profile/profile.dart';
 import 'pages/slider/slider-view.dart';
 import 'styles/style.dart';
@@ -36,6 +39,9 @@ class MyApp extends StatelessWidget {
         'profile': (context) => ProfilePage(),
         'edit-profile': (context) => EditProfilePage(),
         'appointment-details': (context) => AppointmentDetails(),
+        'pet-details': (context) => PetDetails(),
+        'pet-care-home': (context) => PetCareHome(),
+        'pet-care-details': (context) => PetCareDetails(),
       },
     );
   }

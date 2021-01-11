@@ -36,3 +36,34 @@ final List<Map<String, dynamic>> messageList = [
     "date": "Mon 8:00 AM",
   }
 ];
+
+final List<Map<String, dynamic>> serviceList = [
+  {
+    "image": "assets/images/service-1.png",
+    "name": "Posh Pows",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-2.png",
+    "name": "Enlighten Dogs",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-1.png",
+    "name": "Posh Pows 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-2.png",
+    "name": "Enlighten Dogs 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  }
+];

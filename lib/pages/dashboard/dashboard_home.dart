@@ -123,9 +123,11 @@ class _DashBoardState extends State<DashBoard> {
           return GestureDetector(
             onTap: () {
               // print(imageList[i]);
-              serviceList = imageList[i]['services'];
-              selectedPet = imageList[i];
-              setState(() {});
+              // serviceList = imageList[i]['services'];
+              // selectedPet = imageList[i];
+              // setState(() {});
+              Navigator.of(context)
+                  .pushNamed('pet-details', arguments: imageList[i]);
             },
             child: Padding(
               padding: const EdgeInsets.only(
@@ -505,18 +507,24 @@ class _DashBoardState extends State<DashBoard> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
-            children: [
-              Image.asset(
-                'assets/icons/care.png',
-                scale: 0.8,
-              ),
-              verticalSpace05,
-              Text(
-                'Care',
-                style: titleStyle,
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              print('pet care clicked');
+              Navigator.of(context).pushNamed('pet-care-home');
+            },
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/icons/care.png',
+                  scale: 0.8,
+                ),
+                verticalSpace05,
+                Text(
+                  'Care',
+                  style: titleStyle,
+                ),
+              ],
+            ),
           ),
           horizontalSpace20,
           Column(

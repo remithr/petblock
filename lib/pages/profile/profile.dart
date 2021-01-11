@@ -223,7 +223,14 @@ class ProfilePage extends StatelessWidget {
           crossAxisSpacing: 10,
           children: List.generate(imageList.length, (i) {
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                print('pet clicked');
+                // print(imageList[i]);
+                Navigator.of(context).pushNamed(
+                  'pet-details',
+                  arguments: imageList[i],
+                );
+              },
               child: Padding(
                 padding: const EdgeInsets.only(
                   // left: 8.0,

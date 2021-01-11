@@ -9,6 +9,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="petblock"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDgJVluwB216-c53e-erOHG_nV7EP51A_o"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -33,6 +35,8 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+              
+              <!-- AIzaSyDgJVluwB216-c53e-erOHG_nV7EP51A_o -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
