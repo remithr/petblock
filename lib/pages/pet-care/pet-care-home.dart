@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:petblock/dummy/dummy_data.dart';
+import 'package:petblock/enums/enums.dart';
+import 'package:petblock/pages/shared/shared.dart';
 import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
 
@@ -13,17 +15,22 @@ class PetCareHome extends StatefulWidget {
 
 class _PetCareHomeState extends State<PetCareHome> {
   Completer<GoogleMapController> _controller = Completer();
-
+  ViewState state = ViewState.Busy;
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(
+      37.42796133580664,
+      -122.085749655962,
+    ),
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  // static final CameraPosition _kLake = CameraPosition(
+  //   bearing: 192.8334901395799,
+  //   target: LatLng(37.43296265331129, -122.08832357078792),
+  //   tilt: 59.440717697143555,
+  //   zoom: 19.151926040649414,
+  // );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +61,7 @@ class _PetCareHomeState extends State<PetCareHome> {
       ),
       body: Stack(
         children: [
+          CommonWidgets().getProgressBar(state),
           Positioned(
             top: 0,
             left: 0,
@@ -69,6 +77,9 @@ class _PetCareHomeState extends State<PetCareHome> {
                 myLocationButtonEnabled: true,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
+                  setState(() {
+                    state = ViewState.Idle;
+                  });
                 },
               ),
             ),

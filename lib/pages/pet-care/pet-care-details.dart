@@ -73,7 +73,11 @@ class PetCareDetails extends StatelessWidget {
                                 right: 20.0,
                               ),
                               child: RaisedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  //TO navigate to book now stepper page.
+                                  Navigator.of(context)
+                                      .pushNamed('book-service');
+                                },
                                 color: primaryColor,
                                 child: Text(
                                   'Book Now',
@@ -168,6 +172,7 @@ class PetCareDetails extends StatelessWidget {
                               child: TabBar(
                                 labelColor: Colors.green,
                                 unselectedLabelColor: Colors.black,
+                                indicatorPadding: EdgeInsets.zero,
                                 tabs: [
                                   Tab(text: 'Services'),
                                   Tab(text: 'Contact Details'),
@@ -177,7 +182,7 @@ class PetCareDetails extends StatelessWidget {
                             ),
                             Container(
                               height: MediaQuery.of(context).size.height *
-                                  0.2, //height of TabBarView
+                                  0.25, //height of TabBarView
                               decoration: BoxDecoration(
                                 border: Border(
                                   top: BorderSide(
@@ -188,82 +193,9 @@ class PetCareDetails extends StatelessWidget {
                               ),
                               child: TabBarView(
                                 children: <Widget>[
-                                  Container(
-                                    child: ListView(
-                                      children: [
-                                        ListTile(
-                                          leading: CircleAvatar(
-                                            // child: Image.asset(
-                                            //   'assets/images/nail.png',
-                                            // ),
-                                            backgroundImage: AssetImage(
-                                              'assets/images/nail.png',
-                                            ),
-                                          ),
-                                          title: Text(
-                                            'Nail Trimming',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          subtitle: Text(
-                                            'Time Required 1 hr',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          leading: CircleAvatar(
-                                            // child: Image.asset(
-                                            //   'assets/images/nail.png',
-                                            // ),
-                                            backgroundImage: AssetImage(
-                                              'assets/images/ears.png',
-                                            ),
-                                          ),
-                                          title: Text(
-                                            'Ears Clean',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          subtitle: Text(
-                                            'Time Required 1 hr',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Center(
-                                      child: Text(
-                                        'Contact Details',
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Center(
-                                      child: Text(
-                                        'Ratings',
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  servicesUI(),
+                                  contactUI(),
+                                  ratingsUI(context),
                                   // Container(
                                   //   child: Center(
                                   //     child: Text('Display Tab 4',
@@ -352,6 +284,228 @@ class PetCareDetails extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container ratingsUI(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              // mainAxisAlignment:
+              //     MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Customer Reviews(10)',
+                  style: tcard,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 8.0,
+                      ),
+                      // child: Text(
+                      //   'More Help',
+                      // ),
+                      child: RichText(
+                        text: TextSpan(
+                          style: reviewsHelp,
+                          children: [
+                            TextSpan(
+                              text: "More Help ",
+                            ),
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.arrow_downward_rounded,
+                                size: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          // TODO ListVIEW here
+          Container(
+            height: 125,
+            child: ListView(
+              children: [
+                ListTile(
+                  title: Text(
+                    'Posh Pows provides a great service!! All staff is very nice',
+                  ),
+                  subtitle: Text(
+                    'John | 23 June 2020',
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    'Pows provides a great service!! All staff is very nice',
+                  ),
+                  subtitle: Text(
+                    'John | 23 June 2020',
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, top: 4),
+            child: GestureDetector(
+              onTap: () {
+                print('Redirect to reviews page');
+                Navigator.of(context).pushNamed('reviews');
+              },
+              child: Text(
+                'View more',
+                style: taddpet,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container contactUI() {
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          // mainAxisAlignment:
+          //     MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            verticalSpace10,
+            Text(
+              'Address',
+              style: textfieldTitle,
+            ),
+            Text(
+              'Main Street,121NY, New York City',
+              style: titleStyle,
+            ),
+            verticalSpace10,
+            Text(
+              'Phone No.',
+              style: textfieldTitle,
+            ),
+            Text(
+              '0123-456789',
+              style: titleStyle,
+            ),
+            verticalSpace10,
+            Text(
+              'Working Hours',
+              style: textfieldTitle,
+            ),
+            Text(
+              '10:00am- 06:00pm',
+              style: titleStyle,
+            ),
+            verticalSpace10,
+            Text(
+              'Email Acddress',
+              style: textfieldTitle,
+            ),
+            Text(
+              'poshpaws@gmail.com',
+              style: titleStyle,
+            ),
+            verticalSpace10,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container servicesUI() {
+    return Container(
+      child: ListView(
+        children: [
+          ListTile(
+            leading: CircleAvatar(
+              // child: Image.asset(
+              //   'assets/images/nail.png',
+              // ),
+              backgroundImage: AssetImage(
+                'assets/images/nail.png',
+              ),
+            ),
+            title: Text(
+              'Nail Trimming',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              'Time Required 1 hr',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              // child: Image.asset(
+              //   'assets/images/nail.png',
+              // ),
+              backgroundImage: AssetImage(
+                'assets/images/ears.png',
+              ),
+            ),
+            title: Text(
+              'Ears Clean',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              'Time Required 1 hr',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              // child: Image.asset(
+              //   'assets/images/nail.png',
+              // ),
+              backgroundImage: AssetImage(
+                'assets/images/nail.png',
+              ),
+            ),
+            title: Text(
+              'Nail Trimming',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              'Time Required 1 hr',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

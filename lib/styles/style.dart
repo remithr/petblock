@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/styles/petblock_app.dart';
 
 final sText = TextStyle(
   color: Color(0xff39C7CE),
@@ -64,6 +65,13 @@ final taddpet = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+final reviewsHelp = TextStyle(
+  color: Color(0xff39C7CE),
+  fontSize: 12.0,
+  fontFamily: 'RobotoMono',
+  fontWeight: FontWeight.w500,
+);
+
 final noPets = TextStyle(
   color: Color(0xff39C7CE),
   fontSize: 25.0,
@@ -125,6 +133,12 @@ final horizontalSpace20 = SizedBox(
 );
 final horizontalSpace40 = SizedBox(
   width: 40,
+);
+
+final boneIcon = Icon(
+  PetblockApp.bone,
+  color: primaryColor,
+  size: 15,
 );
 
 final List<Map<String, dynamic>> imageList = [

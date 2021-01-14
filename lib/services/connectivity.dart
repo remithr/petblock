@@ -1,7 +1,7 @@
 // REFERENCE https://medium.com/flutter-community/build-a-network-sensitive-ui-in-flutter-using-provider-and-connectivity-ddad140c9ff8
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
-import 'package:petblock/enums/connectivity.dart';
+import 'package:petblock/enums/enums.dart';
 
 class ConnectivityService {
   StreamController<ConnectivityStatus> connectionStatusController =
