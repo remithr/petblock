@@ -28,6 +28,11 @@ final tdesc = TextStyle(
   fontFamily: 'Raleway',
 );
 
+final matchTxt = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w700,
+);
+
 final sliderImage = EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0);
 
 final lgText = TextStyle(
@@ -35,6 +40,11 @@ final lgText = TextStyle(
   fontSize: 14.0,
   fontWeight: FontWeight.w400,
   fontFamily: 'RobotoMono',
+);
+
+final petMatching = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w700,
 );
 
 final fgText = TextStyle(
@@ -47,10 +57,7 @@ final fgemailText = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
-final fglinkText = TextStyle(
-  fontSize: 14.0,
-  color:greyA8
-);
+final fglinkText = TextStyle(fontSize: 14.0, color: greyA8);
 
 final verticalSpace60 = SizedBox(
   height: 60,
@@ -66,6 +73,9 @@ final verticalSpace20 = SizedBox(
 
 final verticalSpace10 = SizedBox(
   height: 10,
+);
+final verticalSpace5 = SizedBox(
+  height: 5,
 );
 
 final primaryColor = Color(0xff39C7CE);

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/pages/login/check-box.dart';
 import 'package:petblock/pages/login/email-verification.dart';
 import 'package:petblock/pages/login/forgot-password.dart';
 import 'package:petblock/pages/login/login.dart';
 import 'package:petblock/pages/slider/profile-slider.dart';
 import 'package:petblock/pages/slider/slider-view.dart';
+import 'package:petblock/pet-matching/chat-list.dart';
+import 'package:petblock/pet-matching/dog-profile-review.dart';
+import 'package:petblock/pet-matching/match-map.dart';
+import 'package:petblock/pet-matching/match-search.dart';
+import 'package:petblock/pet-matching/pet-matching.dart';
 
 
 void main() {
@@ -30,6 +36,12 @@ class MyApp extends StatelessWidget {
         'create-user':(context) => ProfileSlider(),
         'forgot-pass':(context) => ForgotPassword(),
         'email-ver' : (context) => EmailVerifyScreen(),
+        'check-box' : (context) => CheckboxScreen(),
+        'pet-matching' : (context) => PetMatching(),
+        'match-search' : (context) => MatchSearch(),
+        'map-match' : (context) => MatchMap(),
+        'dog-review' : (context) => DogProfileReview(),
+        'chat-list' : (context) => ChatList(),
       },
     );
   }

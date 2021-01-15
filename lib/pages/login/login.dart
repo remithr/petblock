@@ -68,7 +68,10 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 54,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    var args = {'facebook': true};
+                    Navigator.of(context).pushReplacementNamed('create-user' , arguments: args);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

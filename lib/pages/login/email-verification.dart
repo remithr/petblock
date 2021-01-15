@@ -96,7 +96,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
               height: 54,
               child: RaisedButton(
                 onPressed: () {
-                  //Navigator.of(context).pushReplacementNamed('create-user');
+                  Navigator.of(context).pushReplacementNamed('pet-matching');
                 },
                 child: Text(
                   "Continue",

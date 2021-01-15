@@ -180,49 +180,22 @@ class _SliderViewPageState extends State<SliderViewPage> {
   @override
   Widget build(BuildContext context) {
     return new IntroSlider(
-      // List slides
       slides: this.slides,
-
-      // Skip button
-      // renderSkipBtn: this.renderSkipBtn(),
-      // colorSkipBtn: Color(0x33ffcc5c),
-      // highlightColorSkipBtn: Color(0xffffcc5c),
-
-      // Next button
       renderNextBtn: this.renderNextBtn(),
-      // highlightColorPrevBtn: Colors.transparent,
-      // Done button
       renderDoneBtn: this.renderDoneBtn(),
       onDonePress: this.onDonePress,
       colorDoneBtn: Colors.transparent,
-      //colorPrevBtn: primaryColor,
-      // colorSkipBtn: primaryColor,
-      //widthPrevBtn: 60,
-      // borderRadiusPrevBtn: 30,
       widthDoneBtn: 120,
       isShowSkipBtn: false,
-      //borderRadiusDoneBtn: 30,
-      // widthPrevBtn: 50,
-
-      // highlightColorDoneBtn: Colors.transparent,
-
-      // Dot indicator
       colorDot: tgrey,
       sizeDot: 13.0,
       colorActiveDot: primaryColor,
-      // typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
-
-      // Tabs
       listCustomTabs: this.renderListCustomTabs(),
       backgroundColorAllSlides: Colors.white,
       refFuncGoToTab: (refFunc) {
         this.goToTab = refFunc;
       },
-
-      // Show or hide status bar
       shouldHideStatusBar: true,
-
-      // On tab change completed
       onTabChangeCompleted: this.onTabChangeCompleted,
     );
   }

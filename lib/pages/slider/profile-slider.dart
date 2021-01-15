@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
+import 'package:petblock/pages/login/check-box.dart';
+import 'package:petblock/pages/login/toggle-btn.dart';
 import 'package:petblock/styles/style.dart';
 
 class ProfileSlider extends StatefulWidget {
@@ -11,8 +13,11 @@ class ProfileSlider extends StatefulWidget {
 class _ProfileSliderState extends State<ProfileSlider> {
   List<Slide> slides = [];
   Function goToTab;
+  var userData;
   bool _checkVal = false;
+  bool _valueCheck = false;
   int currentTab = 0;
+  bool _toggled = false;
   String radioItem = '';
   String _currentSelectedValue;
   var _countries = [
@@ -48,6 +53,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print('Setting arguments $userData');
     slides.add(
       new Slide(
         title: "Select User Type",
@@ -95,7 +101,7 @@ class _ProfileSliderState extends State<ProfileSlider> {
   void onDonePress() {
     // Back to the first tab
     // this.goToTab(0);
-    Navigator.of(context).pushReplacementNamed('email-ver');
+    Navigator.of(context).pushReplacementNamed('match-');
   }
 
   void onTabChangeCompleted(index) {
@@ -125,7 +131,8 @@ class _ProfileSliderState extends State<ProfileSlider> {
   Widget renderDoneBtn() {
     return RawMaterialButton(
       onPressed: () {
-        Navigator.of(context).pushReplacementNamed('email-ver');
+        //Navigator.of(context).pushReplacementNamed('match-search');
+        Navigator.of(context).pushReplacementNamed('pet-matching');
       },
       elevation: 2.0,
       fillColor: primaryColor,
@@ -146,7 +153,11 @@ class _ProfileSliderState extends State<ProfileSlider> {
     );
   }
 
-  List<Widget> renderListCustomTabs() {
+  List<Widget> renderListCustomTabs(data) {
+    print('data inside custom tabs');
+    if (data != null) {
+      print(data['facebook']);
+    }
     List<Widget> tabs = new List();
     for (int i = 0; i < slides.length; i++) {
       Slide currentSlide = slides[i];
@@ -157,7 +168,6 @@ class _ProfileSliderState extends State<ProfileSlider> {
             height: MediaQuery.of(context).size.height,
             child: Container(
               margin: EdgeInsets.only(
-                // bottom: 0.0,
                 left: 20,
                 right: 20,
               ),
@@ -183,6 +193,41 @@ class _ProfileSliderState extends State<ProfileSlider> {
                   _buildCards('petOwner'),
                   verticalSpace40,
                   _buildCards('servicePro'),
+                  if (data != null) verticalSpace20,
+                  if (data != null) _buildDivider(),
+                  if (data != null) verticalSpace20,
+                  if (data != null)
+                    SizedBox(
+                      height: 54,
+                      child: RaisedButton(
+                        onPressed: () {
+                          currentTab++;
+                          this.goToTab(currentTab);
+                          // var args = {'facebook': true};
+                          // Navigator.of(context).pushReplacementNamed(
+                          //     'create-user',
+                          //     arguments: args);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Image.asset(
+                                "assets/icons/facebook.png",
+                              ),
+                            ),
+                            Text("Sign In with Facebook",
+                                style: TextStyle(fontSize: 18)),
+                          ],
+                        ),
+                        color: fbColor,
+                        textColor: twhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -226,6 +271,8 @@ class _ProfileSliderState extends State<ProfileSlider> {
                   buildTextField('Contact Number*'),
                   verticalSpace40,
                   buildTextField('Password*'),
+                  verticalSpace40,
+                  ToggleButton(),
                 ],
               ),
             ),
@@ -349,34 +396,31 @@ class _ProfileSliderState extends State<ProfileSlider> {
     return tabs;
   }
 
+  _buildDivider() {
+    return Row(children: <Widget>[
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+          child: Divider(color: Colors.black),
+        ),
+      ),
+      Text("OR SIGNUP WITH"),
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+          child: Divider(color: Colors.black),
+        ),
+      ),
+    ]);
+  }
+
   _buildCalendarCards(val) {
     double swidth = MediaQuery.of(context).size.width;
     print('width $swidth');
     double sheight = MediaQuery.of(context).size.height;
     print('height $sheight');
-    return SizedBox(
-      height: 70.0,
-      width: MediaQuery.of(context).size.width - 350 ,
-      child: Card(
-        color: primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                 val == 'outlook' ? 'Outlook' : val == 'gsuite' ? 'Gsuite' : 'Icalendar',
-                textAlign: TextAlign.start,
-                style: TextStyle(fontSize: 16.0, color: twhite, fontWeight: FontWeight.w700),
-              ),
-              //_buildCheckBtn()
-            ],
-          ),
-        ),
-      ),
+    return Center(
+      child: CheckboxScreen(),
     );
   }
 
@@ -557,41 +601,21 @@ class _ProfileSliderState extends State<ProfileSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return new IntroSlider(
+    userData =
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    return IntroSlider(
       // List slides
       slides: this.slides,
-
-      // Skip button
-      // renderSkipBtn: this.renderSkipBtn(),
-      // colorSkipBtn: Color(0x33ffcc5c),
-      // highlightColorSkipBtn: Color(0xffffcc5c),
-
-      // Next button
       renderNextBtn: this.renderNextBtn(),
-      // highlightColorPrevBtn: Colors.transparent,
-      // Done button
       renderDoneBtn: this.renderDoneBtn(),
       onDonePress: this.onDonePress,
       colorDoneBtn: Colors.transparent,
-      //colorPrevBtn: primaryColor,
-      // colorSkipBtn: primaryColor,
-      //widthPrevBtn: 60,
-      // borderRadiusPrevBtn: 30,
       widthDoneBtn: 120,
       isShowSkipBtn: false,
-      //borderRadiusDoneBtn: 30,
-      // widthPrevBtn: 50,
-
-      // highlightColorDoneBtn: Colors.transparent,
-
-      // Dot indicator
       colorDot: tgrey,
       sizeDot: 13.0,
       colorActiveDot: primaryColor,
-      // typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
-
-      // Tabs
-      listCustomTabs: this.renderListCustomTabs(),
+      listCustomTabs: this.renderListCustomTabs(userData),
       backgroundColorAllSlides: Colors.white,
       refFuncGoToTab: (refFunc) {
         this.goToTab = refFunc;
