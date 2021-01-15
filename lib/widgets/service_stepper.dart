@@ -67,7 +67,7 @@ const TextStyle _kStepStyle = TextStyle(
   fontSize: 12.0,
   color: Colors.white,
 );
-const Color _kErrorLight = Colors.red;
+const Color _kErrorLight = Color(0xff39C7CE);
 final Color _kErrorDark = Colors.red.shade400;
 const Color _kCircleActiveLight = Colors.grey;
 const Color _kCircleActiveDark = Colors.black87;
@@ -345,7 +345,7 @@ class _PetblockStepperState extends State<PetblockStepper>
         );
       case PetblockStepState.stepTwo:
         return CircleAvatar(
-          backgroundColor: isDarkActive ? primaryColor : _kCircleActiveLight,
+          backgroundColor: !isDarkActive ? primaryColor : _kCircleActiveLight,
           child: Text(
             '2',
             style: TextStyle(
@@ -355,7 +355,7 @@ class _PetblockStepperState extends State<PetblockStepper>
         );
       case PetblockStepState.stepThree:
         return CircleAvatar(
-          backgroundColor: isDarkActive ? primaryColor : _kCircleActiveLight,
+          backgroundColor: !isDarkActive ? primaryColor : _kCircleActiveLight,
           child: Text(
             '3',
             style: TextStyle(
@@ -453,9 +453,11 @@ class _PetblockStepperState extends State<PetblockStepper>
 
   Widget _buildVerticalControls() {
     if (widget.controlsBuilder != null)
-      return widget.controlsBuilder(context,
-          onStepContinue: widget.onStepContinue,
-          onStepCancel: widget.onStepCancel);
+      return widget.controlsBuilder(
+        context,
+        onStepContinue: widget.onStepContinue,
+        onStepCancel: widget.onStepCancel,
+      );
 
     Color cancelColor;
 

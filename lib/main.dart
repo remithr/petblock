@@ -9,6 +9,7 @@ import 'package:petblock/pages/pet-care/services.dart';
 import 'package:petblock/pages/pet-details/pet-details.dart';
 
 import 'pages/add-pet/add-pet.dart';
+import 'pages/pet-care/paypal.dart';
 import 'pages/pet-care/pet-care-details.dart';
 import 'pages/profile/profile.dart';
 import 'pages/slider/slider-view.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         'pet-care-details': (context) => PetCareDetails(),
         'reviews': (context) => ReviewsPage(),
         'book-service': (context) => ServicesPage(),
+        'paypal': (context) => PaypalPage(),
       },
     );
   }

@@ -14,6 +14,15 @@ final tdesc = TextStyle(
   // fontStyle: FontStyle.italic,
   fontFamily: 'RobotoMono',
 );
+
+final paypalText = TextStyle(
+  color: Color(0xffA8A8A8),
+  fontSize: 16.0,
+  // fontStyle: FontStyle.italic,
+  fontWeight: FontWeight.w700,
+  fontFamily: 'RobotoMono',
+);
+
 final cdesc = TextStyle(
   color: Color(0xffACA5A3),
   fontSize: 10.0,
@@ -25,6 +34,13 @@ final titleStyle = TextStyle(
   color: Color(0xff000000),
   fontSize: 16.0,
   fontWeight: FontWeight.bold,
+  fontFamily: 'RobotoMono',
+);
+
+final paypalTerms = TextStyle(
+  color: Color(0xff000000),
+  fontSize: 18.0,
+  fontWeight: FontWeight.w400,
   fontFamily: 'RobotoMono',
 );
 
@@ -61,6 +77,13 @@ final textfieldTitleWhite = TextStyle(
 final taddpet = TextStyle(
   color: Color(0xff39C7CE),
   fontSize: 14.0,
+  fontFamily: 'RobotoMono',
+  fontWeight: FontWeight.w500,
+);
+
+final paypalButtons = TextStyle(
+  color: Color(0xff39C7CE),
+  fontSize: 16.0,
   fontFamily: 'RobotoMono',
   fontWeight: FontWeight.w500,
 );

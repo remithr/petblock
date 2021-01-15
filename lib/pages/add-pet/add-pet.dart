@@ -63,14 +63,15 @@ class _AddPetState extends State<AddPet> {
                           children: [
                             // Text('Species'),
                             Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _textFieldTitle('Species'),
-                                verticalSpace05,
-                                _formIconField('Species'),
-                              ],
-                            )),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _textFieldTitle('Species'),
+                                  verticalSpace05,
+                                  _formIconField('Species'),
+                                ],
+                              ),
+                            ),
                             horizontalSpace05,
                             // Text('Breed'),
                             Expanded(
