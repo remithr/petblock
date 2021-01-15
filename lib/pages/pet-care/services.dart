@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petblock/styles/style.dart';
+import 'package:petblock/widgets/service_stepper.dart';
 
 class ServicesPage extends StatefulWidget {
   @override
@@ -7,11 +8,11 @@ class ServicesPage extends StatefulWidget {
 }
 
 class _ServicesPageState extends State<ServicesPage> {
-  List<Step> steps = [
-    Step(
-      title: const Text('New Account'),
+  List<PetblockStep> steps = [
+    PetblockStep(
+      title: const Text('Selected Services'),
       isActive: true,
-      state: StepState.complete,
+      state: PetblockStepState.stepOne,
       content: Column(
         children: <Widget>[
           TextFormField(
@@ -23,10 +24,10 @@ class _ServicesPageState extends State<ServicesPage> {
         ],
       ),
     ),
-    Step(
+    PetblockStep(
       isActive: false,
-      state: StepState.editing,
-      title: const Text('Address'),
+      state: PetblockStepState.stepTwo,
+      title: const Text('Book'),
       content: Column(
         children: <Widget>[
           TextFormField(
@@ -38,10 +39,10 @@ class _ServicesPageState extends State<ServicesPage> {
         ],
       ),
     ),
-    Step(
-      state: StepState.error,
-      title: const Text('Avatar'),
-      subtitle: const Text("Error!"),
+    PetblockStep(
+      state: PetblockStepState.stepThree,
+      title: const Text('Payment'),
+      // subtitle: const Text("Error!"),
       content: Column(
         children: <Widget>[
           CircleAvatar(
@@ -87,9 +88,9 @@ class _ServicesPageState extends State<ServicesPage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Stepper(
+            child: PetblockStepper(
               steps: steps,
-              type: StepperType.horizontal,
+              type: PetblockStepperType.horizontal,
               currentStep: currentStep,
               onStepContinue: next,
               onStepTapped: (step) => goTo(step),
@@ -114,6 +115,10 @@ class _ServicesPageState extends State<ServicesPage> {
   }
 
   goTo(int step) {
-    setState(() => currentStep = step);
+    print(step);
+    setState(() {
+      currentStep = step;
+      // PetblockStepState.s
+    });
   }
 }
