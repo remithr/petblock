@@ -17,7 +17,8 @@ class _AddPetState extends State<AddPet> {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          // padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8.0),
           child: Container(
             // color: unselected,
             decoration: BoxDecoration(

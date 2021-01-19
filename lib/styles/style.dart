@@ -33,7 +33,7 @@ final cdesc = TextStyle(
 final titleStyle = TextStyle(
   color: Color(0xff000000),
   fontSize: 16.0,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w700,
   fontFamily: 'RobotoMono',
 );
 

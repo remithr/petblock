@@ -88,32 +88,7 @@ class ProfilePage extends StatelessWidget {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          // title: Center(
-          //   child: Text(
-          //     values['title'],
-          //   ),
-          // ),
           content: SingleChildScrollView(
-            // child: ListBody(
-            //   children: <Widget>[
-            //     Text(
-            //       values['message1'],
-            //       style: TextStyle(
-            //         fontSize: 18,
-            //         fontWeight: FontWeight.bold,
-            //         color: Colors.black,
-            //       ),
-            //     ),
-            //     Text(
-            //       values['message2'],
-            //       style: TextStyle(
-            //         fontSize: 14,
-            //         fontWeight: FontWeight.normal,
-            //         color: unselected,
-            //       ),
-            //     ),
-            //   ],
-            // ),
             child: Center(
               child: Column(
                 children: [

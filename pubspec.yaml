@@ -18,6 +18,8 @@ dependencies:
   table_calendar: ^2.3.3
   google_maps_flutter: ^1.0.6
   stacked: ^1.7.7
+  lottie: ^0.7.0+1
+  flutter_hooks: ^0.15.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +32,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lottie/
     # - images/a_dot_burr.jpeg
     # - images/a_dot_ham.jpeg
 

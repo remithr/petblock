@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:petblock/dummy/dummy_data.dart';
 import 'package:petblock/pages/dashboard/appointments.dart';
 import 'package:petblock/pages/dashboard/payment.dart';
@@ -17,6 +18,16 @@ class _DashBoardState extends State<DashBoard> {
   bool addPet = false;
   List serviceList = [];
   Map selectedPet = {};
+  bool showAnimation = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    Future.delayed(Duration(milliseconds: 5000)).then((dm) {
+      showAnimation = false;
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +82,6 @@ class _DashBoardState extends State<DashBoard> {
                     itemCount: messageList.length,
                     itemBuilder: (BuildContext ctx, int i) {
                       return ListTile(
-                        // title: Text(
-                        //   messageList[i]['title'],
-                        //   style: TextStyle(
-                        //     color: Colors.black,
-                        //   ),
-                        // ),
-
-                        // leading: Image.asset(
-                        //   'assets/icons/paypal.png',
-                        // ),
                         leading: CircleAvatar(
                           backgroundImage: AssetImage(
                             messageList[i]['img'],
@@ -119,82 +120,85 @@ class _DashBoardState extends State<DashBoard> {
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        children: List.generate(imageList.length, (i) {
-          return GestureDetector(
-            onTap: () {
-              // print(imageList[i]);
-              // serviceList = imageList[i]['services'];
-              // selectedPet = imageList[i];
-              // setState(() {});
-              Navigator.of(context)
-                  .pushNamed('pet-details', arguments: imageList[i]);
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(
-                // left: 8.0,
-                right: 8.0,
-              ),
-              child: Container(
-                width: 165,
-                // height: 180,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    10.0,
-                  ),
-                  color: primaryColorLight,
+        children: List.generate(
+          imageList.length,
+          (i) {
+            return GestureDetector(
+              onTap: () {
+                // print(imageList[i]);
+                // serviceList = imageList[i]['services'];
+                // selectedPet = imageList[i];
+                // setState(() {});
+                Navigator.of(context)
+                    .pushNamed('pet-details', arguments: imageList[i]);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  // left: 8.0,
+                  right: 8.0,
                 ),
-                child: Card(
-                  elevation: 2,
-                  // shadowColor: primaryColorLight,
-                  shape: RoundedRectangleBorder(
+                child: Container(
+                  width: 165,
+                  // height: 180,
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                       10.0,
                     ),
+                    color: primaryColorLight,
                   ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          right: 10.0,
-                          top: 10.0,
-                        ),
-                        child: Align(
-                          child: Icon(
-                            imageList[i]['gender'] == "male"
-                                ? PetblockApp.male
-                                : PetblockApp.female,
-                          ),
-                          alignment: Alignment.topRight,
-                        ),
+                  child: Card(
+                    elevation: 2,
+                    // shadowColor: primaryColorLight,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        10.0,
                       ),
-                      verticalSpace05,
-                      CircleAvatar(
-                        radius: 40,
-                        // backgroundColor: Color(0xffFDCF09),
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage: AssetImage(
-                            imageList[i]['image'],
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 10.0,
+                            top: 10.0,
+                          ),
+                          child: Align(
+                            child: Icon(
+                              imageList[i]['gender'] == "male"
+                                  ? PetblockApp.male
+                                  : PetblockApp.female,
+                            ),
+                            alignment: Alignment.topRight,
                           ),
                         ),
-                      ),
-                      verticalSpace05,
-                      Text(
-                        imageList[i]['name'],
-                        style: titleStyle,
-                      ),
-                      verticalSpace05,
-                      Text(
-                        imageList[i]['age'],
-                        style: greyedText,
-                      ),
-                    ],
+                        verticalSpace05,
+                        CircleAvatar(
+                          radius: 40,
+                          // backgroundColor: Color(0xffFDCF09),
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage: AssetImage(
+                              imageList[i]['image'],
+                            ),
+                          ),
+                        ),
+                        verticalSpace05,
+                        Text(
+                          imageList[i]['name'],
+                          style: titleStyle,
+                        ),
+                        verticalSpace05,
+                        Text(
+                          imageList[i]['age'],
+                          style: greyedText,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
@@ -338,10 +342,7 @@ class _DashBoardState extends State<DashBoard> {
               children: [
                 Container(
                   width: 165,
-                  child: Image.asset(
-                    serviceList[i]['image'],
-                    fit: BoxFit.fill,
-                  ),
+                  child: Image.asset(serviceList[i]['image'], fit: BoxFit.fill),
                 ),
                 Positioned(
                   bottom: 20,
@@ -351,56 +352,36 @@ class _DashBoardState extends State<DashBoard> {
                     width: 125,
                     // color: twhite,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: tgrey,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
+                      border: Border.all(color: tgrey),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: twhite,
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        // mainAxisAlignment:
-                        //     MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            serviceList[i]['name'],
-                            style: tcard,
-                          ),
-                          Text(
-                            serviceList[i]['address'],
-                            style: cdesc,
-                          ),
+                          Text(serviceList[i]['name'], style: tcard),
+                          Text(serviceList[i]['address'], style: cdesc),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Row(
                                 children: [
-                                  Icon(
-                                    PetblockApp.pin,
-                                    size: 10,
-                                    color: Colors.black,
-                                  ),
-                                  Text(
-                                    serviceList[i]['distance'],
-                                    style: cdesc,
-                                  ),
+                                  Icon(PetblockApp.pin,
+                                      size: 10, color: Colors.black),
+                                  Text(serviceList[i]['distance'],
+                                      style: cdesc),
                                 ],
                               ),
                               Row(
                                 children: [
                                   // Icon(PetblockApp.bone),
-                                  Text(
-                                    serviceList[i]['meal'],
-                                    style: cdesc,
-                                  ),
+                                  Text(serviceList[i]['meal'], style: cdesc),
                                 ],
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -482,23 +463,29 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
-  Column _noPetsWidget() {
-    return Column(
-      children: [
-        Center(
-          child: Image.asset(
-            'assets/icons/no-pet.png',
-          ),
-        ),
-        verticalSpace05,
-        Text(
-          'You haven’t added any pets',
-          style: noPets,
-        ),
-        verticalSpace05,
-        verticalSpace40,
-      ],
-    );
+  Widget _noPetsWidget() {
+    return showAnimation
+        ? Center(
+            child: Lottie.asset(
+              'assets/lottie/walkwalk.json',
+            ),
+          )
+        : Column(
+            children: [
+              Center(
+                child: Image.asset(
+                  'assets/icons/no-pet.png',
+                ),
+              ),
+              verticalSpace05,
+              Text(
+                'You haven’t added any pets',
+                style: noPets,
+              ),
+              verticalSpace05,
+              verticalSpace40,
+            ],
+          );
   }
 
   Padding _buildSubMenu() {
@@ -541,18 +528,24 @@ class _DashBoardState extends State<DashBoard> {
             ],
           ),
           horizontalSpace20,
-          Column(
-            children: [
-              Image.asset(
-                'assets/icons/vet.png',
-                scale: 0.8,
-              ),
-              verticalSpace05,
-              Text(
-                'Vet',
-                style: titleStyle,
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              print('REDIRECT TO PET_VET PAGE');
+              Navigator.of(context).pushNamed('pet-vet-home');
+            },
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/icons/vet.png',
+                  scale: 0.8,
+                ),
+                verticalSpace05,
+                Text(
+                  'Vet',
+                  style: titleStyle,
+                ),
+              ],
+            ),
           ),
           horizontalSpace20,
           Column(

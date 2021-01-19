@@ -478,53 +478,66 @@ class _PetblockStepperState extends State<PetblockStepper>
         MaterialLocalizations.of(context);
 
     const OutlinedBorder buttonShape = RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(2)));
+      borderRadius: BorderRadius.all(
+        Radius.circular(7),
+      ),
+    );
     const EdgeInsets buttonPadding = EdgeInsets.symmetric(horizontal: 16.0);
 
     return Container(
       margin: const EdgeInsets.only(top: 16.0),
       child: ConstrainedBox(
-        constraints: const BoxConstraints.tightFor(height: 48.0),
+        constraints: const BoxConstraints.tightFor(height: 60.0),
         child: Row(
           // The Material spec no longer includes a PetblockStepper widget. The continue
           // and cancel button styles have been configured to match the original
           // version of this widget.
           children: <Widget>[
-            TextButton(
-              onPressed: widget.onStepContinue,
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                  return states.contains(MaterialState.disabled)
-                      ? null
-                      : (_isDark()
-                          ? colorScheme.onSurface
-                          : colorScheme.onPrimary);
-                }),
-                backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                  return _isDark() || states.contains(MaterialState.disabled)
-                      ? null
-                      : colorScheme.primary;
-                }),
-                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    buttonPadding),
-                shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
-              ),
-              child: Text(localizations.continueButtonLabel),
+            Text(
+              'Total : \$50',
+              style: titleStyle,
             ),
-            Container(
-              margin: const EdgeInsetsDirectional.only(start: 8.0),
+            horizontalSpace20,
+            Expanded(
               child: TextButton(
-                onPressed: widget.onStepCancel,
-                style: TextButton.styleFrom(
-                  primary: cancelColor,
-                  padding: buttonPadding,
-                  shape: buttonShape,
+                onPressed: widget.onStepContinue,
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      return states.contains(MaterialState.disabled)
+                          ? null
+                          : (_isDark()
+                              ? colorScheme.onSurface
+                              : colorScheme.onPrimary);
+                    },
+                  ),
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                    return _isDark() || states.contains(MaterialState.disabled)
+                        ? null
+                        : primaryColor;
+                  }),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    buttonPadding,
+                  ),
+                  shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
                 ),
-                child: Text(localizations.cancelButtonLabel),
+                // child: Text(localizations.continueButtonLabel),
+                child: Text('Book'),
               ),
             ),
+            // Container(
+            //   margin: const EdgeInsetsDirectional.only(start: 8.0),
+            //   child: TextButton(
+            //     onPressed: widget.onStepCancel,
+            //     style: TextButton.styleFrom(
+            //       primary: cancelColor,
+            //       padding: buttonPadding,
+            //       shape: buttonShape,
+            //     ),
+            //     child: Text(localizations.cancelButtonLabel),
+            //   ),
+            // ),
           ],
         ),
       ),

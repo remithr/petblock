@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
 
-class PetCareDetails extends StatelessWidget {
+class PetVetDetailsPage extends StatefulWidget {
+  @override
+  _PetVetDetailsPageState createState() => _PetVetDetailsPageState();
+}
+
+class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
   @override
   Widget build(BuildContext context) {
     var serviceDetails =
@@ -32,14 +38,27 @@ class PetCareDetails extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Expanded(
-                            child: Text(
-                              "Posh Paws",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Caring Claws Vet",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
-                            ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  boneIcon,
+                                  boneIcon,
+                                  boneIcon,
+                                  boneIcon,
+                                ],
+                              ),
+                            ],
                           ),
                           Expanded(
                             child: Padding(
@@ -198,7 +217,7 @@ class PetCareDetails extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.40,
                 child: Image.asset(
                   // serviceDetails['image'],
-                  'assets/images/pet-details.png',
+                  'assets/images/doctor.png',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -240,20 +259,20 @@ class PetCareDetails extends StatelessWidget {
                   ),
                   horizontalSpace20,
                   // verticalSpace20,
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      color: primaryColor,
-                    ),
-                    child: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: Colors.white,
-                    ),
-                  ),
+                  // Container(
+                  //   height: 40,
+                  //   width: 40,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(
+                  //       20,
+                  //     ),
+                  //     color: primaryColor,
+                  //   ),
+                  //   child: Icon(
+                  //     Icons.shopping_bag_outlined,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -408,78 +427,78 @@ class PetCareDetails extends StatelessWidget {
     return Container(
       child: ListView(
         children: [
-          ListTile(
-            leading: CircleAvatar(
-              // child: Image.asset(
-              //   'assets/images/nail.png',
-              // ),
-              backgroundImage: AssetImage(
-                'assets/images/nail.png',
-              ),
-            ),
-            title: Text(
-              'Nail Trimming',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              'Time Required 1 hr',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-              // child: Image.asset(
-              //   'assets/images/nail.png',
-              // ),
-              backgroundImage: AssetImage(
-                'assets/images/ears.png',
-              ),
-            ),
-            title: Text(
-              'Ears Clean',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              'Time Required 1 hr',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-              // child: Image.asset(
-              //   'assets/images/nail.png',
-              // ),
-              backgroundImage: AssetImage(
-                'assets/images/nail.png',
-              ),
-            ),
-            title: Text(
-              'Nail Trimming',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              'Time Required 1 hr',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          // ListTile(
+          //   leading: CircleAvatar(
+          //     // child: Image.asset(
+          //     //   'assets/images/nail.png',
+          //     // ),
+          //     backgroundImage: AssetImage(
+          //       'assets/images/nail.png',
+          //     ),
+          //   ),
+          //   title: Text(
+          //     'Nail Trimming',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          //   subtitle: Text(
+          //     'Time Required 1 hr',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
+          // ListTile(
+          //   leading: CircleAvatar(
+          //     // child: Image.asset(
+          //     //   'assets/images/nail.png',
+          //     // ),
+          //     backgroundImage: AssetImage(
+          //       'assets/images/ears.png',
+          //     ),
+          //   ),
+          //   title: Text(
+          //     'Ears Clean',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          //   subtitle: Text(
+          //     'Time Required 1 hr',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
+          // ListTile(
+          //   leading: CircleAvatar(
+          //     // child: Image.asset(
+          //     //   'assets/images/nail.png',
+          //     // ),
+          //     backgroundImage: AssetImage(
+          //       'assets/images/nail.png',
+          //     ),
+          //   ),
+          //   title: Text(
+          //     'Nail Trimming',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          //   subtitle: Text(
+          //     'Time Required 1 hr',
+          //     style: TextStyle(
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
