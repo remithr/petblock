@@ -20,6 +20,7 @@ dependencies:
   stacked: ^1.7.7
   lottie: ^0.7.0+1
   flutter_hooks: ^0.15.0
+  adaptive_action_sheet: ^1.0.10
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petblock/styles/petblock_app.dart';
+// import 'package:petblock/styles/petblock_app.dart';
 import 'package:petblock/styles/style.dart';
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 
 class PetVetDetailsPage extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class PetVetDetailsPage extends StatefulWidget {
 }
 
 class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
+  bool yesChecked = false;
   @override
   Widget build(BuildContext context) {
     var serviceDetails =
@@ -84,8 +87,228 @@ class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
                           ),
                         ],
                       ),
-                      Text(
-                        'Write a review',
+                      GestureDetector(
+                        onTap: () {
+                          final action = CupertinoActionSheet(
+                            title: Text(
+                              "Write a Review",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            actions: [
+                              CupertinoActionSheetAction(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      // ListTile(
+                                      //   leading: Image.asset(
+                                      //     'assets/images/review.av.png',
+                                      //   ),
+                                      //   title: Text(
+                                      //     'Pet Owner',
+                                      //   ),
+                                      //   subtitle: Text(
+                                      //     'New York',
+                                      //   ),
+                                      // ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/review-av.png',
+                                          ),
+                                          Column(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                  left: 8.0,
+                                                ),
+                                                child: Text(
+                                                  'Pet Owner',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'New York',
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 14,
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Text(
+                                        'Share your experience',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      verticalSpace10,
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 8.0,
+                                          right: 8.0,
+                                        ),
+                                        child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 50,
+                                          decoration: ipBoxDecoration,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 10.0,
+                                            ),
+                                            child: Text(
+                                              'Very Good Service',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          OutlineButton(
+                                            onPressed: () {},
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                8,
+                                              ),
+                                            ),
+                                            color: primaryColor,
+                                            focusColor: primaryColor,
+                                            child: Text(
+                                              'Cancel',
+                                              style: paypalButtons,
+                                            ),
+                                          ),
+                                          horizontalSpace20,
+                                          Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                print('Pay Button pressed');
+                                              },
+                                              child: Text(
+                                                'Post',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                              color: primaryColor,
+                                              // height: 50,
+                                              // minWidth: MediaQuery.of(context).size.width,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  8.0,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        'Has your dog bitten another dog?',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          OutlineButton(
+                                            onPressed: () {},
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                8,
+                                              ),
+                                            ),
+                                            color: primaryColor,
+                                            focusColor: primaryColor,
+                                            child: Text(
+                                              'Yes',
+                                              style: paypalButtons,
+                                            ),
+                                          ),
+                                          horizontalSpace20,
+                                          OutlineButton(
+                                            onPressed: () {},
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                8,
+                                              ),
+                                            ),
+                                            color: primaryColor,
+                                            focusColor: primaryColor,
+                                            child: Text(
+                                              'No',
+                                              style: paypalButtons,
+                                            ),
+                                          ),
+                                          // CheckboxListTile(
+                                          //   title: const Text('Yes'),
+                                          //   value: yesChecked,
+                                          //   onChanged: (bool value) {
+                                          //     setState(() {
+                                          //       yesChecked = !yesChecked;
+                                          //     });
+                                          //   },
+                                          //   secondary: const Icon(
+                                          //     Icons.check,
+                                          //   ),
+                                          // ),
+                                          // CheckboxListTile(
+                                          //   title: const Text('No'),
+                                          //   value: !yesChecked,
+                                          //   onChanged: (bool value) {
+                                          //     setState(() {
+                                          //       yesChecked = !yesChecked;
+                                          //     });
+                                          //   },
+                                          //   secondary: const Icon(
+                                          //     Icons.check,
+                                          //   ),
+                                          // ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ],
+                          );
+                          showCupertinoModalPopup(
+                              context: context, builder: (context) => action);
+                        },
+                        child: Text(
+                          'Write a review',
+                        ),
                       ),
                       Text(
                         'Service for',
@@ -243,18 +466,68 @@ class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
               right: 20,
               child: Row(
                 children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        20,
+                  GestureDetector(
+                    onTap: () {
+                      print('show action scheet');
+                      // showAdaptiveActionSheet(
+                      //   context: context,
+                      //   title: const Text('Share on Social Media'),
+                      //   actions: <BottomSheetAction>[
+                      //     BottomSheetAction(title: 'Item 1', onPressed: () {}),
+                      //     // BottomSheetAction(title: 'Item 2', onPressed: () {}),
+                      //     // BottomSheetAction(title: 'Item 3', onPressed: () {}),
+                      //   ],
+                      //   cancelAction: CancelAction(
+                      //       title:
+                      //           'Cancel'), // onPressed parameter is optional by default will dismiss the ActionSheet
+                      // );
+                      final action = CupertinoActionSheet(
+                        title: Text(
+                          "Share on Social Media",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        actions: [
+                          CupertinoActionSheetAction(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/facebook-circle.png',
+                                ),
+                                horizontalSpace10,
+                                Image.asset(
+                                  'assets/images/insta-circle.png',
+                                ),
+                                horizontalSpace10,
+                                Image.asset(
+                                  'assets/images/twitter-circle.png',
+                                ),
+                              ],
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      );
+                      showCupertinoModalPopup(
+                          context: context, builder: (context) => action);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        color: primaryColor,
                       ),
-                      color: primaryColor,
-                    ),
-                    child: Icon(
-                      Icons.share_outlined,
-                      color: Colors.white,
+                      child: Icon(
+                        Icons.share_outlined,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   horizontalSpace20,
@@ -426,79 +699,46 @@ class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
   Container servicesUI() {
     return Container(
       child: ListView(
+        // scrollDirection: Axis.horizontal,
         children: [
-          // ListTile(
-          //   leading: CircleAvatar(
-          //     // child: Image.asset(
-          //     //   'assets/images/nail.png',
-          //     // ),
-          //     backgroundImage: AssetImage(
-          //       'assets/images/nail.png',
-          //     ),
-          //   ),
-          //   title: Text(
-          //     'Nail Trimming',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          //   subtitle: Text(
-          //     'Time Required 1 hr',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
-          // ListTile(
-          //   leading: CircleAvatar(
-          //     // child: Image.asset(
-          //     //   'assets/images/nail.png',
-          //     // ),
-          //     backgroundImage: AssetImage(
-          //       'assets/images/ears.png',
-          //     ),
-          //   ),
-          //   title: Text(
-          //     'Ears Clean',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          //   subtitle: Text(
-          //     'Time Required 1 hr',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
-          // ListTile(
-          //   leading: CircleAvatar(
-          //     // child: Image.asset(
-          //     //   'assets/images/nail.png',
-          //     // ),
-          //     backgroundImage: AssetImage(
-          //       'assets/images/nail.png',
-          //     ),
-          //   ),
-          //   title: Text(
-          //     'Nail Trimming',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          //   subtitle: Text(
-          //     'Time Required 1 hr',
-          //     style: TextStyle(
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          // ),
+          verticalSpace10,
+          Text('Available on'),
+          verticalSpace10,
+          Row(
+            children: [
+              horizontalSpace10,
+              CircleAvatar(
+                child: Image.asset(
+                  'assets/images/whatsapp.png',
+                ),
+              ),
+              horizontalSpace10,
+              CircleAvatar(
+                child: Image.asset(
+                  'assets/images/skype.png',
+                ),
+              ),
+              horizontalSpace10,
+              CircleAvatar(
+                child: Image.asset(
+                  'assets/images/zoom.png',
+                ),
+              ),
+            ],
+          ),
+          verticalSpace05,
+          ListTile(
+            title: Text('Website Link'),
+            subtitle: Text(
+              'https://caringclaws.com',
+            ),
+          ),
+          ListTile(
+            title: Text('Certificate'),
+            subtitle: Text(
+              'Pet Vet Certificate',
+            ),
+          ),
         ],
       ),
     );
