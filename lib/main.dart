@@ -9,6 +9,7 @@ import 'package:petblock/pet-matching/chat-list.dart';
 import 'package:petblock/pet-matching/dog-profile-review.dart';
 import 'package:petblock/pet-matching/match-map.dart';
 import 'package:petblock/pet-matching/match-search.dart';
+import 'package:petblock/pet-matching/message.dart';
 import 'package:petblock/pet-matching/pet-matching.dart';
 
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         'map-match' : (context) => MatchMap(),
         'dog-review' : (context) => DogProfileReview(),
         'chat-list' : (context) => ChatList(),
+        'message' : (context) => Message(),
       },
     );
   }

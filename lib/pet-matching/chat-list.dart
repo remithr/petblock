@@ -43,38 +43,45 @@ class _ChatListState extends State<ChatList> {
               spacing: 12, // space between two icons
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top:12.0),
-                  child: Icon(Icons.search, color: Colors.black,),
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
                 ), // icon-1
                 Padding(
-                  padding: const EdgeInsets.only(top:12.0, right:5.0),
-                  child: Icon(Icons.notifications_outlined, color: Colors.black,),
+                  padding: const EdgeInsets.only(top: 12.0, right: 5.0),
+                  child: Icon(
+                    Icons.notifications_outlined,
+                    color: Colors.black,
+                  ),
                 ),
                 CircleAvatar(
-                      backgroundImage: AssetImage(userList[2]['img']),
-                    ), // icon-2
+                  backgroundImage: AssetImage(userList[2]['img']),
+                ), // icon-2
               ],
             ),
           ),
           verticalSpace20,
           Padding(
-            padding: const EdgeInsets.only(left:20.0),
+            padding: const EdgeInsets.only(left: 20.0),
             child: Text('Messages', style: matchTxt),
           ),
           verticalSpace20,
           Expanded(
             child: ListView.builder(
-                itemCount: userList.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage(userList[index]['img']),
-                    ),
-                    trailing: Text('Mon 09:00 AM', style: lgText),
-                    title: Text(userList[index]['name'], style: matchTxt),
-                    subtitle: Text(userList[index]['message']),
-                  );
-                }),
+              itemCount: userList.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(userList[index]['img']),
+                  ),
+                  trailing: Text('Mon 09:00 AM', style: lgText),
+                  title: Text(userList[index]['name'], style: matchTxt),
+                  subtitle: Text(userList[index]['message']),
+                );
+              },
+            ),
           )
         ],
       ),

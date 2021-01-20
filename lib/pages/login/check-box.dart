@@ -29,8 +29,6 @@ class _CheckboxScreenState extends State<CheckboxScreen> {
             _valueCheck = value;
           });
         },
-        tileColor: primaryColor,
-        
       );
   }
 }

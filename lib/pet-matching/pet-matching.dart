@@ -57,7 +57,8 @@ class _PetMatchingState extends State<PetMatching> {
                     right: 10,
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed('chat-list');
+                        //Navigator.of(context).pushNamed('chat-list');
+                        Navigator.of(context).pushNamed('message');
                       },
                       child: SizedBox(
                         height: 100,
