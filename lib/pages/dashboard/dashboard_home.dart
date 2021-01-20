@@ -491,91 +491,157 @@ class _DashBoardState extends State<DashBoard> {
   Padding _buildSubMenu() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GestureDetector(
-            onTap: () {
-              print('pet care clicked');
-              Navigator.of(context).pushNamed('pet-care-home');
-            },
-            child: Column(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                print('pet care clicked');
+                Navigator.of(context).pushNamed('pet-care-home');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/care.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace05,
+                  Text(
+                    'Care',
+                    style: titleStyle,
+                  ),
+                ],
+              ),
+            ),
+            horizontalSpace20,
+            Column(
               children: [
                 Image.asset(
-                  'assets/icons/care.png',
+                  'assets/icons/training.png',
                   scale: 0.8,
                 ),
                 verticalSpace05,
                 Text(
-                  'Care',
+                  'Training',
                   style: titleStyle,
                 ),
               ],
             ),
-          ),
-          horizontalSpace20,
-          Column(
-            children: [
-              Image.asset(
-                'assets/icons/training.png',
-                scale: 0.8,
+            horizontalSpace20,
+            GestureDetector(
+              onTap: () {
+                print('REDIRECT TO PET_VET PAGE');
+                Navigator.of(context).pushNamed('pet-vet-home');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/vet.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace05,
+                  Text(
+                    'Vet',
+                    style: titleStyle,
+                  ),
+                ],
               ),
-              verticalSpace05,
-              Text(
-                'Training',
-                style: titleStyle,
-              ),
-            ],
-          ),
-          horizontalSpace20,
-          GestureDetector(
-            onTap: () {
-              print('REDIRECT TO PET_VET PAGE');
-              Navigator.of(context).pushNamed('pet-vet-home');
-            },
-            child: Column(
+            ),
+            horizontalSpace20,
+            Column(
               children: [
                 Image.asset(
-                  'assets/icons/vet.png',
+                  'assets/icons/matching.png',
                   scale: 0.8,
                 ),
                 verticalSpace05,
                 Text(
-                  'Vet',
+                  'Matching',
                   style: titleStyle,
                 ),
               ],
             ),
-          ),
-          horizontalSpace20,
-          Column(
-            children: [
-              Image.asset(
-                'assets/icons/matching.png',
-                scale: 0.8,
+            horizontalSpace20,
+            Column(
+              children: [
+                Image.asset(
+                  'assets/icons/vet-loc.png',
+                  scale: 0.8,
+                ),
+                verticalSpace05,
+                Text(
+                  'Places',
+                  style: titleStyle,
+                ),
+              ],
+            ),
+            horizontalSpace20,
+            Column(
+              children: [
+                Image.asset(
+                  'assets/icons/insurance.png',
+                  scale: 0.8,
+                ),
+                verticalSpace10,
+                Text(
+                  'Insurance',
+                  style: titleStyle,
+                ),
+              ],
+            ),
+            horizontalSpace20,
+            GestureDetector(
+              onTap: () {
+                print('PET VET FORUM PAGE');
+                Navigator.of(context).pushNamed('pet-vet-forum-home');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/vetForum.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace10,
+                  verticalSpace05,
+                  Text(
+                    'Vet Forum',
+                    style: titleStyle,
+                  ),
+                ],
               ),
-              verticalSpace05,
-              Text(
-                'Matching',
-                style: titleStyle,
-              ),
-            ],
-          ),
-          horizontalSpace20,
-          Column(
-            children: [
-              Image.asset(
-                'assets/icons/vet-loc.png',
-                scale: 0.8,
-              ),
-              verticalSpace05,
-              Text(
-                'Places',
-                style: titleStyle,
-              ),
-            ],
-          ),
-        ],
+            ),
+            horizontalSpace20,
+            Column(
+              children: [
+                Image.asset(
+                  'assets/icons/trainerForum.png',
+                  scale: 0.8,
+                ),
+                verticalSpace05,
+                Text(
+                  'Trainer Forum',
+                  style: titleStyle,
+                ),
+              ],
+            ),
+            horizontalSpace20,
+            Column(
+              children: [
+                Image.asset(
+                  'assets/icons/products.png',
+                  scale: 0.8,
+                ),
+                verticalSpace05,
+                Text(
+                  'Products',
+                  style: titleStyle,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

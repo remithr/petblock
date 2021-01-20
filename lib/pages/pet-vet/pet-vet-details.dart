@@ -72,8 +72,8 @@ class _PetVetDetailsPageState extends State<PetVetDetailsPage> {
                               child: RaisedButton(
                                 onPressed: () {
                                   //TO navigate to book now stepper page.
-                                  Navigator.of(context)
-                                      .pushNamed('book-service');
+                                  // Navigator.of(context)
+                                  //     .pushNamed('book-service');
                                 },
                                 color: primaryColor,
                                 child: Text(

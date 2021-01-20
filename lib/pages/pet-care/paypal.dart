@@ -11,11 +11,15 @@ class _PaypalPageState extends State<PaypalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Paypal',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+        // title: Text(
+        //   'Paypal',
+        //   style: TextStyle(
+        //     color: Colors.black,
+        //   ),
+
+        // ),
+        title: Image.asset(
+          'assets/images/paypal.png',
         ),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
