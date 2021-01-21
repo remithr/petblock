@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:petblock/styles/style.dart';
 
-class PetVetForumHome extends StatefulWidget {
+class PostDetailsPage extends StatefulWidget {
   @override
-  _PetVetForumHomeState createState() => _PetVetForumHomeState();
+  _PostDetailsPageState createState() => _PostDetailsPageState();
 }
 
-class _PetVetForumHomeState extends State<PetVetForumHome> {
+class _PostDetailsPageState extends State<PostDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,86 +29,87 @@ class _PetVetForumHomeState extends State<PetVetForumHome> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Pet Vet Forum',
+          'Why is my pet not eating?',
           style: TextStyle(
             color: Colors.black,
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child: DefaultTabController(
-          length: 2, // length of tabs
-          initialIndex: 0,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 10.0,
+            right: 10,
+          ),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                child: TabBar(
-                  labelColor: Colors.green,
-                  unselectedLabelColor: Colors.black,
-                  indicatorPadding: EdgeInsets.zero,
-                  tabs: [
-                    Tab(text: 'All Posts'),
-                    Tab(text: 'My Posts'),
-                  ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              allPostsCard(
+                context,
+                'assets/images/nick.png',
+                'Nick Johnson',
+              ),
+              verticalSpace10,
+              Text(
+                'Answers(10)',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              Container(
-                height:
-                    MediaQuery.of(context).size.height, //height of TabBarView
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                      color: Colors.grey,
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-                child: TabBarView(
-                  children: <Widget>[
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: allPostsCard(
-                            context,
-                            'assets/images/nick.png',
-                            'Nick Johnson',
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: allPostsCard(
-                            context,
-                            'assets/images/steven.png',
-                            'Steven George',
-                          ),
-                        ),
-                        // Text('All Posts'),
-                      ],
-                    ),
-                    Center(child: Text('My Posts Section Here')),
-                    // Container(
-                    //   child: Center(
-                    //     child: Text('Display Tab 4',
-                    //         style: TextStyle(
-                    //             fontSize: 22,
-                    //             fontWeight: FontWeight.bold)),
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ),
+              verticalSpace10,
+              answerCard(),
+              verticalSpace10,
+              answerCard(),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        child: Icon(Icons.add),
-        backgroundColor: primaryColor,
+    );
+  }
+
+  Card answerCard() {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          10,
+        ),
+      ),
+      elevation: 5,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: ListTile(
+              leading: Image.asset('assets/images/christina.png'),
+              title: Text('Dr Christina'),
+            ),
+          ),
+          verticalSpace10,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 25.0,
+                  right: 25.0,
+                ),
+                child: Text(
+                  ' In some cases, however, there may be another reason your dog won\'t eat. Dogs may go off their food because of changes in their environment, stress, an adverse reaction to drugs, and nausea.',
+                  maxLines: 8,
+                  softWrap: true,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              )
+            ],
+          ),
+          verticalSpace20,
+        ],
       ),
     );
   }
@@ -129,17 +130,11 @@ class _PetVetForumHomeState extends State<PetVetForumHome> {
             child: ListTile(
               leading: Image.asset(image),
               title: Text(name),
-              subtitle: GestureDetector(
-                onTap: () {
-                  print('view more clicked');
-                  Navigator.of(context).pushNamed('post-details');
-                },
-                child: Text(
-                  'View More',
-                  style: TextStyle(
-                    color: primaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
+              subtitle: Text(
+                'View More',
+                style: TextStyle(
+                  color: primaryColor,
+                  decoration: TextDecoration.underline,
                 ),
               ),
             ),
@@ -213,13 +208,8 @@ class _PetVetForumHomeState extends State<PetVetForumHome> {
             leading: Icon(
               Icons.add_comment,
             ),
-            title: GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushNamed('comments');
-              },
-              child: Text(
-                'Add a comment..',
-              ),
+            title: Text(
+              'Add a comment..',
             ),
           ),
         ],
