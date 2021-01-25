@@ -7,6 +7,7 @@ import 'package:petblock/pages/pet-care/pet-care-home.dart';
 import 'package:petblock/pages/pet-care/reviews.dart';
 import 'package:petblock/pages/pet-care/services.dart';
 import 'package:petblock/pages/pet-details/pet-details.dart';
+import 'package:petblock/pages/pet-friendly/pet-friendly-home.dart';
 import 'package:petblock/pages/pet-vet-forum/comments.dart';
 import 'package:petblock/pages/pet-vet-forum/pet-vet-forum-home.dart';
 import 'package:petblock/pages/pet-vet-forum/post-details.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         'pet-vet-forum-home': (context) => PetVetForumHome(),
         'post-details': (context) => PostDetailsPage(),
         'comments': (context) => CommentsPage(),
+        'pet-friendly': (context) => PetFriendlyHomePage(),
         // PetVetDetailsPage
       },
     );

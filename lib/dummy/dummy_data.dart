@@ -119,3 +119,41 @@ final List<Map<String, dynamic>> perCareServiceList = [
     "meal": "4.5"
   }
 ];
+
+final List<Map<String, dynamic>> restaurantList = [
+  {
+    "image": "assets/images/rest-1.png",
+    "name": "Irish Cafe",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/rest-2.png",
+    "name": "Spirits Bistro",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-3.png",
+    "name": "Caring Claws Net",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-4.png",
+    "name": "Enlighten Dogs 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/images/service-5.png",
+    "name": "Enlighten Dogs 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  }
+];

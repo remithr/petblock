@@ -87,15 +87,11 @@ class _PetVetForumHomeState extends State<PetVetForumHome> {
                         // Text('All Posts'),
                       ],
                     ),
-                    Center(child: Text('My Posts Section Here')),
-                    // Container(
-                    //   child: Center(
-                    //     child: Text('Display Tab 4',
-                    //         style: TextStyle(
-                    //             fontSize: 22,
-                    //             fontWeight: FontWeight.bold)),
-                    //   ),
-                    // ),
+                    Center(
+                      child: Text(
+                        'My Posts Section Here',
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -564,18 +564,24 @@ class _DashBoardState extends State<DashBoard> {
               ],
             ),
             horizontalSpace20,
-            Column(
-              children: [
-                Image.asset(
-                  'assets/icons/vet-loc.png',
-                  scale: 0.8,
-                ),
-                verticalSpace05,
-                Text(
-                  'Places',
-                  style: titleStyle,
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                print('Friendly Places Redirect');
+                Navigator.of(context).pushNamed('pet-friendly');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/vet-loc.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace05,
+                  Text(
+                    'Places',
+                    style: titleStyle,
+                  ),
+                ],
+              ),
             ),
             horizontalSpace20,
             Column(
