@@ -16,6 +16,7 @@ import 'package:petblock/pages/pet-vet/pet-vet-home.dart';
 import 'pages/add-pet/add-pet.dart';
 import 'pages/pet-care/paypal.dart';
 import 'pages/pet-care/pet-care-details.dart';
+import 'pages/pet-insurance/pet-insurance.dart';
 import 'pages/pet-vet/pet-vet-details.dart';
 import 'pages/profile/profile.dart';
 import 'pages/slider/slider-view.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         'post-details': (context) => PostDetailsPage(),
         'comments': (context) => CommentsPage(),
         'pet-friendly': (context) => PetFriendlyHomePage(),
+        'insurance': (context) => PetInsuranceHome(),
         // PetVetDetailsPage
       },
     );

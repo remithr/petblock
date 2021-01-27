@@ -71,6 +71,7 @@ class _DashBoardState extends State<DashBoard> {
               // verticalSpace05,
               if (_selectedIndex == 0)
                 if (!addPet) _addPetButton() else _buildPetsSection(),
+
               if (_selectedIndex == 1) AppointmentsTab(),
               if (_selectedIndex == 2) PaymentSection(),
 
@@ -396,6 +397,51 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
+  Widget _addPetButton_gradient() {
+    return RaisedButton(
+      padding: const EdgeInsets.all(0.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      onPressed: () {
+        print('Add pet Button pressed');
+        addPet = true;
+        setState(() {});
+      },
+      // color: primaryColor,
+      // child: Text(
+      //   'Add Pet',
+      //   style: TextStyle(
+      //     color: twhite,
+      //     fontSize: 18,
+      //     fontWeight: FontWeight.bold,
+      //   ),
+      // ),
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Color(0xFF726F6F),
+              Color(0xFFFF5555),
+              // Color(0xFF42A5F5),
+            ],
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+        ),
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        child: const Text(
+          'Add Pet',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
   SizedBox _addPetButton() {
     return SizedBox(
       width: double.infinity,
@@ -584,18 +630,24 @@ class _DashBoardState extends State<DashBoard> {
               ),
             ),
             horizontalSpace20,
-            Column(
-              children: [
-                Image.asset(
-                  'assets/icons/insurance.png',
-                  scale: 0.8,
-                ),
-                verticalSpace10,
-                Text(
-                  'Insurance',
-                  style: titleStyle,
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                print('Insurance redirect');
+                Navigator.of(context).pushNamed('insurance');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/insurance.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace10,
+                  Text(
+                    'Insurance',
+                    style: titleStyle,
+                  ),
+                ],
+              ),
             ),
             horizontalSpace20,
             GestureDetector(

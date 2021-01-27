@@ -188,28 +188,19 @@ class _PetFriendlyHomePageState extends State<PetFriendlyHomePage> {
       // height: 180,
       // width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.30,
-      // child: GridView.count(
-      //   crossAxisCount: 2,
-      //   mainAxisSpacing: 5,
-      //   crossAxisSpacing: 2,
-      //   children: List.generate(
-      //     restaurantList.length,
-      //     (i) {
-      //       return ;
-      //     },
-      //   ),
-      // ),
+
       child: ListView.builder(
         itemCount: restaurantList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int i) {
           return InkWell(
             onTap: () {
+              print('208');
               print(restaurantList[i]);
-              Navigator.of(context).pushNamed(
-                'pet-care-details',
-                arguments: restaurantList[i],
-              );
+              // Navigator.of(context).pushNamed(
+              //   'pet-care-details',
+              //   arguments: restaurantList[i],
+              // );
             },
             child: Stack(
               children: [
@@ -243,9 +234,24 @@ class _PetFriendlyHomePageState extends State<PetFriendlyHomePage> {
                         //     MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            restaurantList[i]['name'],
-                            style: tcard,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                restaurantList[i]['name'],
+                                style: tcard,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  print('FLAG THIS PLACE AS PET FRIENDLY!');
+                                  _showMyDialog();
+                                },
+                                child: Icon(
+                                  Icons.flag,
+                                  size: 15,
+                                ),
+                              )
+                            ],
                           ),
                           Text(
                             restaurantList[i]['address'],
@@ -288,6 +294,133 @@ class _PetFriendlyHomePageState extends State<PetFriendlyHomePage> {
           );
         },
       ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return Container(
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              20,
+            ),
+          ),
+          child: AlertDialog(
+            title: Center(
+              child: Text(
+                'Are You Sure?',
+              ),
+            ),
+            content: Container(
+              height: 100,
+              child: Column(
+                children: [
+                  Text(
+                    'Do you really want to flag this place as pet friendly?',
+                  ),
+                  verticalSpace10,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlineButton(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: primaryColor,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                        color: primaryColor,
+                        focusColor: primaryColor,
+                        highlightColor: primaryColor,
+                        disabledBorderColor: primaryColor,
+                        disabledTextColor: primaryColor,
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            color: primaryColor,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      // verticalSpace05,
+                      horizontalSpace10,
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                        color: primaryColor,
+                        child: Text(
+                          'Flag',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            // content: SingleChildScrollView(
+            //   child: ListBody(
+            //     children: <Widget>[
+            //       Text('Do you really want to flag this place as pet friendly?'),
+            //     ],
+            //   ),
+            // ),
+            // actions: <Widget>[
+            //   TextButton(
+            //     child: Text('Cancel'),
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //   ),
+            //   TextButton(
+            //     child: Text('Flag'),
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //   ),
+            // ],
+            // actions: [
+            //   Row(
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       TextButton(
+            //         child: Text('Cancel'),
+            //         onPressed: () {
+            //           Navigator.of(context).pop();
+            //         },
+            //       ),
+            //       TextButton(
+            //         child: Text('Flag'),
+            //         onPressed: () {
+            //           Navigator.of(context).pop();
+            //         },
+            //       ),
+            //     ],
+          ),
+        );
+        //   ],
+        // );
+      },
     );
   }
 }
