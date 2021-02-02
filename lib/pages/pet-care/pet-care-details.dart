@@ -171,14 +171,6 @@ class PetCareDetails extends StatelessWidget {
                                   servicesUI(),
                                   contactUI(),
                                   ratingsUI(context),
-                                  // Container(
-                                  //   child: Center(
-                                  //     child: Text('Display Tab 4',
-                                  //         style: TextStyle(
-                                  //             fontSize: 22,
-                                  //             fontWeight: FontWeight.bold)),
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                             ),

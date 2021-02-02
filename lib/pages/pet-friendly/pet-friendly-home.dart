@@ -188,7 +188,6 @@ class _PetFriendlyHomePageState extends State<PetFriendlyHomePage> {
       // height: 180,
       // width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.30,
-
       child: ListView.builder(
         itemCount: restaurantList.length,
         scrollDirection: Axis.horizontal,

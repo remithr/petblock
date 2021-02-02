@@ -562,18 +562,24 @@ class _DashBoardState extends State<DashBoard> {
               ),
             ),
             horizontalSpace20,
-            Column(
-              children: [
-                Image.asset(
-                  'assets/icons/training.png',
-                  scale: 0.8,
-                ),
-                verticalSpace05,
-                Text(
-                  'Training',
-                  style: titleStyle,
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                print('PET TRAINER TAPPED');
+                Navigator.of(context).pushNamed('pet-trainer-home');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/training.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace05,
+                  Text(
+                    'Training',
+                    style: titleStyle,
+                  ),
+                ],
+              ),
             ),
             horizontalSpace20,
             GestureDetector(
@@ -671,18 +677,24 @@ class _DashBoardState extends State<DashBoard> {
               ),
             ),
             horizontalSpace20,
-            Column(
-              children: [
-                Image.asset(
-                  'assets/icons/trainerForum.png',
-                  scale: 0.8,
-                ),
-                verticalSpace05,
-                Text(
-                  'Trainer Forum',
-                  style: titleStyle,
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                // pet-trainer-forum
+                Navigator.of(context).pushNamed('pet-trainer-forum-home');
+              },
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/icons/trainerForum.png',
+                    scale: 0.8,
+                  ),
+                  verticalSpace05,
+                  Text(
+                    'Trainer Forum',
+                    style: titleStyle,
+                  ),
+                ],
+              ),
             ),
             horizontalSpace20,
             Column(

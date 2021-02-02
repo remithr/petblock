@@ -30,6 +30,12 @@ final cdesc = TextStyle(
   fontFamily: 'RobotoMono',
 );
 
+final serviceStyle = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontSize: 10,
+);
+
 final titleStyle = TextStyle(
   color: Color(0xff000000),
   fontSize: 16.0,
@@ -124,7 +130,9 @@ final upBoxDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
 );
 
+final arrowBackground = const Color.fromRGBO(189, 193, 216, 0.4);
 final unselected = Color(0xFFBDC1D8);
+final gtext = Color(0xFF606060);
 final appBackground = Color(0xFFFFFFFF);
 final primaryColor = Color(0xff39C7CE);
 final primaryColorLight = Color(0xFFEAF5F9);

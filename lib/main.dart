@@ -8,6 +8,10 @@ import 'package:petblock/pages/pet-care/reviews.dart';
 import 'package:petblock/pages/pet-care/services.dart';
 import 'package:petblock/pages/pet-details/pet-details.dart';
 import 'package:petblock/pages/pet-friendly/pet-friendly-home.dart';
+import 'package:petblock/pages/pet-trainer-forum/pet-trainer-forum-home.dart';
+import 'package:petblock/pages/pet-trainer-forum/pet-trainer-post-details.dart';
+import 'package:petblock/pages/pet-trainer/pet-trainer-details.dart';
+import 'package:petblock/pages/pet-trainer/trainer-booking.dart';
 import 'package:petblock/pages/pet-vet-forum/comments.dart';
 import 'package:petblock/pages/pet-vet-forum/pet-vet-forum-home.dart';
 import 'package:petblock/pages/pet-vet-forum/post-details.dart';
@@ -16,7 +20,9 @@ import 'package:petblock/pages/pet-vet/pet-vet-home.dart';
 import 'pages/add-pet/add-pet.dart';
 import 'pages/pet-care/paypal.dart';
 import 'pages/pet-care/pet-care-details.dart';
+import 'pages/pet-insurance/life-insurance.dart';
 import 'pages/pet-insurance/pet-insurance.dart';
+import 'pages/pet-trainer/pet-trainer-home.dart';
 import 'pages/pet-vet/pet-vet-details.dart';
 import 'pages/profile/profile.dart';
 import 'pages/slider/slider-view.dart';
@@ -64,6 +70,12 @@ class MyApp extends StatelessWidget {
         'comments': (context) => CommentsPage(),
         'pet-friendly': (context) => PetFriendlyHomePage(),
         'insurance': (context) => PetInsuranceHome(),
+        'life-insurance': (context) => LifeInsurancePage(),
+        'pet-trainer-home': (context) => PetTrainerHome(),
+        'pet-trainer-details': (context) => PetTrainerDetailsPage(),
+        'pet-trainer-booking': (context) => PetTrainerBookingPage(),
+        'pet-trainer-forum-home': (context) => PetTrainerForumHome(),
+        'pet-trainer-posts-home': (context) => PetTrainerPostsHome(),
         // PetVetDetailsPage
       },
     );

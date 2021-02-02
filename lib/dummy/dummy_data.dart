@@ -120,6 +120,51 @@ final List<Map<String, dynamic>> perCareServiceList = [
   }
 ];
 
+final List<Map<String, dynamic>> petTrainerServices = [
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Kindered Dog",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Posh Pows",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Enlighten Dogs",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Caring Claws Net",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Enlighten Dogs 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  },
+  {
+    "image": "assets/icons/pet-trainer.png",
+    "name": "Enlighten Dogs 2",
+    "address": "American street, Main street",
+    "distance": "2,5km",
+    "meal": "4.5"
+  }
+];
+
 final List<Map<String, dynamic>> restaurantList = [
   {
     "image": "assets/images/rest-1.png",

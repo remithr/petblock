@@ -81,8 +81,9 @@ class _PetInsuranceHomeState extends State<PetInsuranceHome> {
             return GestureDetector(
               onTap: () {
                 print(insurance[index]['type']);
-                if (insurance[index]['type'] == 'travel') {
+                if (insurance[index]['type'] == 'health') {
                   print(insurance[index]['type']);
+                  Navigator.of(context).pushNamed('life-insurance');
                 }
               },
               child: Padding(
